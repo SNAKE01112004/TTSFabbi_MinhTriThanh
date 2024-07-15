@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -411,16 +412,16 @@
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000" />
+                                      fill="#000000"/>
                             </svg>
-                        <a href="/view-categories">Danh sách nhóm chương trình</a>
+                        <a href="/view-create-categories">Danh sách nhóm chương trình</a>
 
                         </span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000" />
+                                      fill="#000000"/>
                             </svg>
                             Thêm mới nhóm chương trình
                         </span>
@@ -433,7 +434,7 @@
                              xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </span>
                 <div class="main-information-line"></div>
@@ -443,58 +444,57 @@
                 </div>
             </div>
         </div>
-
-        <div class="main-container">
-            <div class="main-container-left">
-                <form>
+        <form:form action="/add-categories" method="post" modelAttribute="categories">
+            <div class="main-container">
+                <div class="main-container-left">
                     <div class="form-group">
-                        <label for="programGroupName">Tên nhóm chương trình <span class="required">*</span></label>
-                        <input type="text" id="programGroupName" placeholder="Điền tên nhóm chương trình">
+                        <label for="categoriesName">Tên nhóm chương trình <span class="required">*</span></label>
+                        <form:input path="categoriesName" id="categoriesName" cssClass="form-control"
+                                    placeholder="Điền tên nhóm chương trình" />
+                        <form:errors path="categoriesName" cssStyle="color: #E63946" /><br>
                     </div>
                     <div class="form-group">
-                        <label for="relatedKeywords">Từ khóa liên quan</label>
-                        <textarea id="relatedKeywords"
-                                  placeholder="Điền các từ khóa liên quan đến nhóm chương trình"></textarea>
+                        <label for="categoriesTag">Từ khóa liên quan</label> kcan
+                        <form:textarea path="categoriesTag" id="categoriesTag" cssClass="form-control"
+                                       placeholder="Điền các từ khóa liên quan đến nhóm chương trình" />
                         <div class="note">Nhập dấu phẩy (,) sau mỗi từ khóa</div>
                     </div>
-                </form>
-            </div>
+                </div>
 
-            <div class="main-container-right">
-                <div class="form-color">
-                    <label for="colorPicker">Màu giao diện chương trình</label>
-                    <div class="color-selection">
-                        <input type="text" id="colorCode" readonly>
-                        <div class="note">Nhấn chọn màu sắc giao diện</div>
-                    </div>
-                    <input type="color" id="colorPicker">
-                    <div class="color-values">
-                        <div class="color-value">
-                            <label for="rValue">R</label>
-                            <input type="number" id="rValue" readonly>
+                <div class="main-container-right">
+                    <div class="form-color">
+                        <label for="colorPicker">Màu giao diện chương trình</label>
+                        <div class="color-selection">
+                            <form:input id="colorCode" cssClass="form-control" path="categoriesColor" readonly="true" />
+                            <div class="note">Nhấn chọn màu sắc giao diện</div>
                         </div>
-                        <div class="color-value">
-                            <label for="gValue">G</label>
-                            <input type="number" id="gValue" readonly>
-                        </div>
-                        <div class="color-value">
-                            <label for="bValue">B</label>
-                            <input type="number" id="bValue" readonly>
-                        </div>
-                        <div class="color-value">
-                            <label for="aValue">A</label>
-                            <input type="number" id="aValue" readonly>
+                        <input type="color" id="colorPicker">
+                        <div class="color-values">
+                            <div class="color-value">
+                                <label for="rValue">R</label>
+                                <input type="number" id="rValue" readonly>
+                            </div>
+                            <div class="color-value">
+                                <label for="gValue">G</label>
+                                <input type="number" id="gValue" readonly>
+                            </div>
+                            <div class="color-value">
+                                <label for="bValue">B</label>
+                                <input type="number" id="bValue" readonly>
+                            </div>
+                            <div class="color-value">
+                                <label for="aValue">A</label>
+                                <input type="number" id="aValue" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="button-container">
-            <button class="btn cancel">Huỷ</button>
-            <button class="btn create" type="submit">Tạo</button>
-        </div>
-
+            <div class="button-container">
+                <button class="btn cancel">Huỷ</button>
+                <button class="btn create" type="submit">Tạo</button>
+            </div>
+        </form:form>
     </main>
 </div>
 
@@ -574,7 +574,7 @@
             b = parseInt(hex.slice(5, 7), 16);
             a = parseInt(hex.slice(7, 9), 16) / 255;
         }
-        return { r, g, b, a };
+        return {r, g, b, a};
     }
 
     // Initialize with default color

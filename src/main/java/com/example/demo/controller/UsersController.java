@@ -41,8 +41,25 @@ public class UsersController {
     }
 
     @GetMapping("/view-user")
-    private String view_Home(Model model) {
-        model.addAttribute("listUsers", userService.getAllUser());
+    private String view_Home(Model model,
+                             @RequestParam("page") Optional<Integer> page,
+                             @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(0);
+        int pageSize = size.orElse(10);
+
+        Pageable pageable = PageRequest.of(currentPage, pageSize);
+        Page<Users> usersPage = userService.getAllListUser(pageable);
+
+        int totalElement = (int) usersPage.getTotalElements();
+        int begin = currentPage * pageSize + 1;
+        int end = Math.min((currentPage +1)*pageSize,totalElement);
+
+        model.addAttribute("totalPage", usersPage.getTotalPages());
+        model.addAttribute("begin", begin);
+        model.addAttribute("number", currentPage);
+        model.addAttribute("end", end);
+        model.addAttribute("totalElement", totalElement);
+        model.addAttribute("listUsers", usersPage.getContent());
         return "/Users/user";
     }
 
@@ -124,22 +141,6 @@ public class UsersController {
         userService.addUser(users);
         return "/Users/createUser";
     }
-
-    @GetMapping("/")
-    public String listUser(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-        int currentPage = page.orElse(0);
-        int pageSize = size.orElse(10);
-
-        Pageable pageable = PageRequest.of(currentPage, pageSize);
-        Page<Users> usersPage = userService.getAllListUser(pageable);
-
-        model.addAttribute("usersPage", usersPage);
-        model.addAttribute("listUsers", usersPage.getContent());
-
-        return "/Users/user";
-    }
-
-
 
     private String generateMaUsers() {
         int count = 0;
