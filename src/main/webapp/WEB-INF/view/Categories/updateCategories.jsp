@@ -1,13 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="/asset/css/index.css">
+    <link rel="stylesheet" href="/asset/css/test.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
@@ -85,8 +87,10 @@
             padding: .5rem;
             border-radius: .4rem;
             padding: 15px;
-            color: #000000; /* Màu chữ mặc định */
-            text-decoration: none; /* Loại bỏ gạch chân */
+            color: #000000;
+            /* Màu chữ mặc định */
+            text-decoration: none;
+            /* Loại bỏ gạch chân */
         }
 
         .sidebar ul li a span {
@@ -163,168 +167,150 @@
             border-radius: 50%;
         }
 
-        /* main-second-top */
-        .main-second-top {
-            margin-top: 1.5rem;
-            width: 100%;
-            height: 35rem;
-            border-radius: .4rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
-        }
-
-        .second-content-top {
+        .main-container {
+            margin-top: 2%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            font-size: 15px;
         }
 
-        /* main-second-content */
-        .second-content-top {
-            padding: 1rem;
+        .main-container-left {
+            width: 60%;
         }
 
-        .second-content-title span:first-child {
-            font-weight: bold;
-            font-size: 1.2rem;
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        .second-content-title span:last-child {
-            color: #b4b4b4;
-            font-size: .8rem;
-        }
-
-
-        .search-box {
-            position: relative;
-            width: 300px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 15px;
-            padding-left: 30px; /* Để có khoảng trống cho biểu tượng kính lúp */
-            border: 2px solid orange;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 16px;
-            pointer-events: none; /* Để không gây ảnh hưởng khi người dùng click vào */
-        }
-
-        .second-content-operation {
-            display: flex;
-            gap: 13px;
-        }
-
-        .opera-button button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8px 10px;
-            border-radius: 10px;
-        }
-
-        .opera-button button:hover {
-            cursor: pointer;
-        }
-
-        .button1 {
-            background-color: grey;
-        }
-
-        .button2 {
-            background-color: pink;
-        }
-
-        .button3 {
-            background-color: green;
-        }
-
-        .button4 {
-            background-color: blue;
-            color: #ffffff;
-        }
-
-        .button5 {
-            background-color: orange;
-            border: 2px solid orangered;
-            color: orangered;
-        }
-
-        .button6 {
-            background-color: transparent;
-        }
-
-        .second-table {
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        .second-table table {
-            width: 100%;;
-        }
-
-        .second-table table thead tr th,
-        .second-table table tbody tr td {
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .second-table table thead {
-            background-color: #b4b4b4;
-        }
-
-        /* main-three-top */
-        .main-three-top {
-            width: 100%;
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .page {
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        .page li {
-            margin: 0 5px;
-        }
-        .page li a {
+        .form-group label {
             display: block;
-            padding: 8px 16px;
-            text-decoration: none;
-            color: #007bff;
-            border: 1px solid #ddd;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            /* Tăng chiều cao của ô nhập liệu */
+        }
+
+        .form-group .required {
+            color: red;
+        }
+
+        .form-group .note {
+            color: red;
+            font-size: 12px;
+        }
+
+        .main-container-right {
+            margin-left: 10%;
+            width: 30%;
+        }
+
+        .form-color {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .color-selection {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #colorCode {
+            width: 100px; /* Giảm kích thước của ô input */
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #FE771B;
+            color: white;
+            text-align: center;
+            margin-right: 10px; /* Khoảng cách giữa ô input và dòng chữ */
+        }
+
+        .note {
+            color: #FE771B;
+            font-size: 14px;
+        }
+
+        #colorPicker {
+            display: block;
+            width: 100%;
+            height: 150px; /* Điều chỉnh chiều cao của khung chọn màu */
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        .color-values {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .color-value {
+            flex: 1;
+            text-align: center;
+        }
+
+        .color-value label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .color-value input {
+            width: 100%;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-container .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .page li a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-        .page li.active a {
-            background-color: #007bff;
-            color: black;
-            border-color: #007bff;
-        }
-        .page li[aria-disabled="true"] a {
-            pointer-events: none;
-            color: #ddd;
-            border-color: #ddd;
-            background-color: #f8f9fa;
+
+        .button-container .cancel {
+            background-color: #f8d7da;
+            color: #721c24;
         }
 
+        .button-container .cancel:hover {
+            background-color: #f5c6cb;
+            color: #491217;
+        }
+
+        .button-container .create {
+            background-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .button-container .create:hover {
+            background-color: #b1dfbb;
+            color: #0f3d1f;
+        }
     </style>
 </head>
 
@@ -352,7 +338,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="#"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -419,15 +405,25 @@
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Danh sách nhóm chương trình</h1>
+                <h1>Thêm mới nhóm chương trình</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
-                    <span><svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                               xmlns="http://www.w3.org/2000/svg">
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
                                       fill="#000000"/>
                             </svg>
-                            Danh sách nhóm chương trình
+                        <a href="/categories">Danh sách nhóm chương trình</a>
+
+                        </span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000"/>
+                            </svg>
+                            Thêm mới nhóm chương trình
                         </span>
                 </div>
             </div>
@@ -448,120 +444,57 @@
                 </div>
             </div>
         </div>
-
-        <div class="main-second-top">
-            <div class="second-content-top">
-                <div class="second-content-title">
-                    <span>Quản lý nhóm chương trình</span>
-                    <br>
-                    <span>Tất cả nhóm chương trình</span>
+        <form:form action="/categories/update/${categories.categoriesId}" method="post" modelAttribute="categories">
+            <div class="main-container">
+                <div class="main-container-left">
+                    <div class="form-group">
+                        <label for="categoriesName">Tên nhóm chương trình <span class="required">*</span></label>
+                        <form:input path="categoriesName" id="categoriesName" cssClass="form-control"
+                                    placeholder="Điền tên nhóm chương trình" />
+                        <form:errors path="categoriesName" cssStyle="color: #E63946" /><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoriesTag">Từ khóa liên quan</label>
+                        <form:textarea path="categoriesTag" id="categoriesTag" cssClass="form-control"
+                                       placeholder="Điền các từ khóa liên quan đến nhóm chương trình" />
+                        <div class="note">Nhập dấu phẩy (,) sau mỗi từ khóa</div>
+                    </div>
                 </div>
 
-                <div class="second-content-operation">
-                    <div class="search-box">
-                        <form action="/categories/search" method="get">
-                            <div class="input-group">
-                                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-                                <input type="search" name="keyword" placeholder="Tìm kiếm theo tên nhóm chương trình">
+                <div class="main-container-right">
+                    <div class="form-color">
+                        <label for="colorPicker">Màu giao diện chương trình</label>
+                        <div class="color-selection">
+                            <form:input id="colorCode" cssClass="form-control" path="categoriesColor" readonly="true" />
+                            <div class="note">Nhấn chọn màu sắc giao diện</div>
+                        </div>
+                        <input type="color" id="colorPicker">
+                        <div class="color-values">
+                            <div class="color-value">
+                                <label for="rValue">R</label>
+                                <input type="number" id="rValue" readonly>
                             </div>
-                        </form>
-                    </div>
-
-                    <div class="opera-button">
-                        <button class="button4">
-                            <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-                            <a style="color: white" href="/categories/view-create">Thêm mới nhóm chương trình</a>
-                        </button>
-                    </div>
-
-                    <div class="opera-button">
-                        <button class="button6">
-                            <svg width="28px" height="28px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
-                                 stroke-width="3" stroke="#000000" fill="none">
-                                <path d="M46.31,56.71H17.69a.1.1,0,0,1-.1-.08L12.52,15.25c0-.06,0-.1.1-.1H51.38c.06,0,.11,0,.1.1L46.41,56.63A.1.1,0,0,1,46.31,56.71Z"
-                                      stroke-linecap="round"/>
-                                <path d="M46.34,7.29H17.66a.1.1,0,0,0-.09,0l-5,7.68a.09.09,0,0,0,.09.14H51.32a.09.09,0,0,0,.09-.14l-5-7.68A.1.1,0,0,0,46.34,7.29Z"
-                                      stroke-linecap="round"/>
-                                <path d="M29.94,41.56H22.45a1,1,0,0,1-.84-1.46l3.31-5.59" stroke-linecap="round"/>
-                                <path d="M35.28,41.56h6.27a1,1,0,0,0,.84-1.46l-3.81-6.44" stroke-linecap="round"/>
-                                <path d="M27,31l4.15-7a1,1,0,0,1,1.66,0l3.27,5.53" stroke-linecap="round"/>
-                                <path d="M37.86,38.68l-2.78,2.81a.1.1,0,0,0,0,.14l2.78,3" stroke-linecap="round"/>
-                                <path d="M26.21,38l-1.29-3.48s0,0-.06,0l-4.38.88" stroke-linecap="round"/>
-                                <polyline points="32.28 28.86 36.1 29.48 37.52 25.82" stroke-linecap="round"/>
-                            </svg>
-                            <span>Xóa</span>
-                        </button>
+                            <div class="color-value">
+                                <label for="gValue">G</label>
+                                <input type="number" id="gValue" readonly>
+                            </div>
+                            <div class="color-value">
+                                <label for="bValue">B</label>
+                                <input type="number" id="bValue" readonly>
+                            </div>
+                            <div class="color-value">
+                                <label for="aValue">A</label>
+                                <input type="number" id="aValue" readonly>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="second-table">
-                <table>
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>Tên nhóm</th>
-                        <th>Số lượng chương trình</th>
-                        <th>Từ khoá liên quan</th>
-                        <th>Ngày Tạo</th>
-                        <th>Ngày Cập Nhật Gần Nhất</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${listCategories}" var="categories">
-                        <tr>
-                            <td>
-                            <td>${categories.categoriesName}</td>
-                            <td></td>
-                            <td>${categories.categoriesTag}</td>
-                            <td>${categories.createAt}</td>
-                            <td>
-                                <a href="/categories/view-update/${categories.categoriesId}" class="deltail" >Chỉnh sửa</a>
-                                <a href="/categories/delete/${categories.categoriesId}" class="delete">Xóa</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+            <div class="button-container">
+                <button class="btn cancel">Huỷ</button>
+                <button class="btn create" type="submit">Lưu</button>
             </div>
-        </div>
-
-        <div class="main-three-top">
-            <div class="total">
-                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
-            </div>
-            <div class="page">
-                <c:if test="${totalPage >0}">
-                    <c:if test="${number <= 0}">
-                        <li aria-disabled="true"><a href="#">Previous</a></li>
-                    </c:if>
-                    <c:if test="${number > 0}">
-                        <li><a href="?page=${number-1}">Previous</a></li>
-                    </c:if>
-                    <c:forEach begin="0" end="${totalPage-1}" var="i">
-                        <c:choose>
-                            <c:when test="${number == i}">
-                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><a href="?page=${i}">${i+1}</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <c:if test="${number < totalPage -1}">
-                        <li><a href="?page=${number+1}">Next</a></li>
-                    </c:if>
-                    <c:if test="${number >= totalPage-1}">
-                        <li aria-disabled="true"><a  href="#">Next</a></li>
-                    </c:if>
-                </c:if>
-            </div>
-        </div>
+        </form:form>
     </main>
 </div>
 
@@ -603,7 +536,53 @@
             }
         });
     });
+    const colorPicker = document.getElementById('colorPicker');
+    const colorCode = document.getElementById('colorCode');
+    const rValue = document.getElementById('rValue');
+    const gValue = document.getElementById('gValue');
+    const bValue = document.getElementById('bValue');
+    const aValue = document.getElementById('aValue');
+
+    colorCode.addEventListener('click', () => {
+        colorPicker.click();
+    });
+
+    colorPicker.addEventListener('input', () => {
+        const color = colorPicker.value;
+        colorCode.value = color.toUpperCase();
+        colorCode.style.backgroundColor = color;
+        updateColorValues(color);
+    });
+
+    function updateColorValues(color) {
+        const rgba = hexToRGBA(color);
+        rValue.value = rgba.r;
+        gValue.value = rgba.g;
+        bValue.value = rgba.b;
+        aValue.value = rgba.a;
+    }
+
+    function hexToRGBA(hex) {
+        let r = 0, g = 0, b = 0, a = 1;
+        if (hex.length == 7) {
+            r = parseInt(hex.slice(1, 3), 16);
+            g = parseInt(hex.slice(3, 5), 16);
+            b = parseInt(hex.slice(5, 7), 16);
+        } else if (hex.length == 9) {
+            r = parseInt(hex.slice(1, 3), 16);
+            g = parseInt(hex.slice(3, 5), 16);
+            b = parseInt(hex.slice(5, 7), 16);
+            a = parseInt(hex.slice(7, 9), 16) / 255;
+        }
+        return {r, g, b, a};
+    }
+
+    // Initialize with default color
+    const defaultColor = '#FE771B';
+    colorPicker.value = defaultColor;
+    colorCode.value = defaultColor.toUpperCase();
+    colorCode.style.backgroundColor = defaultColor;
+    updateColorValues(defaultColor);
 </script>
 </body>
-
 </html>

@@ -23,12 +23,10 @@
             appearance: none;
             font-family: Arial, Helvetica, sans-serif;
         }
-
         body {
             width: 100%;
             height: 100vh;
         }
-
         .container {
             width: 100%;
             height: 100%;
@@ -36,7 +34,6 @@
             display: grid;
             grid-template-columns: 17rem auto;
         }
-
         /* sidebar bên trái*/
         /* logo */
         aside {
@@ -46,7 +43,6 @@
             background-color: #fff;
             padding: 1rem;
         }
-
         .top-list-logo {
             width: 100%;
             margin: auto;
@@ -54,30 +50,25 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .top-list-logo img {
             padding: 9px 0px;
             max-width: 100%;
             height: auto;
         }
-
         .top-list-logo span {
             width: 90%;
             border: 1px solid rgb(0, 0, 0, 0.1);
             margin-top: 1rem;
         }
-
         /* CSS chung cho sidebar */
         .sidebar {
             width: 100%;
             margin-top: .5rem;
         }
-
         .sidebar ul li {
             position: relative;
             width: 100%;
         }
-
         .sidebar ul li a {
             width: 100%;
             display: flex;
@@ -89,22 +80,18 @@
             color: #000000; /* Màu chữ mặc định */
             text-decoration: none; /* Loại bỏ gạch chân */
         }
-
         .sidebar ul li a span {
             color: #000000;
         }
-
         .sidebar ul li a .title {
             font-size: 1rem;
         }
-
         .sidebar ul li a:focus,
         .sidebar ul li a:focus span,
         .sidebar ul li a:focus .title {
             background-color: rgb(254, 119, 27);
             color: #ffffff;
         }
-
         /* dropdown */
         .dropdown-content {
             display: none;
@@ -112,17 +99,14 @@
             background-color: #b4b4b4;
             z-index: 1;
         }
-
         /* Khi dropdown có lớp 'show', nó sẽ hiển thị */
         .dropdown-content.show {
             display: block;
         }
-
         .dropdown-content a:focus {
             background-color: rgb(254, 119, 27);
             color: #ffffff;
         }
-
         /* main */
         /* main-content */
         .main-content {
@@ -130,7 +114,6 @@
             margin-left: 1.2rem;
             padding: 1.2rem;
         }
-
         /* main-top */
         .main-top {
             width: 100%;
@@ -141,29 +124,24 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .main-navigation {
             margin-top: .7rem;
         }
-
         .main-information {
             display: flex;
             align-items: center;
             gap: .6rem;
             height: 100%;
         }
-
         .main-information-line {
             height: 100%;
             border: 1px solid rgba(0, 0, 0, 0.2);
         }
-
         .main-information-account img {
             width: 3.5rem;
             height: 3.5rem;
             border-radius: 50%;
         }
-
         /* main-second-top */
         .main-second-top {
             margin-top: 1.5rem;
@@ -173,34 +151,27 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
         }
-
         .second-content-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         /* main-second-content */
         .second-content-top {
             padding: 1rem;
         }
-
         .second-content-title span:first-child {
             font-weight: bold;
             font-size: 1.2rem;
         }
-
         .second-content-title span:last-child {
             color: #b4b4b4;
             font-size: .8rem;
         }
-
-
         .search-box {
             position: relative;
             width: 300px;
         }
-
         .search-box input {
             width: 100%;
             padding: 15px;
@@ -209,8 +180,6 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
-
         .search-icon {
             position: absolute;
             left: 10px;
@@ -219,12 +188,10 @@
             height: 16px;
             pointer-events: none; /* Để không gây ảnh hưởng khi người dùng click vào */
         }
-
         .second-content-operation {
             display: flex;
             gap: 13px;
         }
-
         .opera-button button {
             display: flex;
             justify-content: center;
@@ -232,58 +199,46 @@
             padding: 8px 10px;
             border-radius: 10px;
         }
-
         .opera-button button:hover {
             cursor: pointer;
         }
-
         .button1 {
             background-color: grey;
         }
-
         .button2 {
             background-color: pink;
         }
-
         .button3 {
             background-color: green;
         }
-
         .button4 {
             background-color: blue;
             color: #ffffff;
         }
-
         .button5 {
             background-color: orange;
             border: 2px solid orangered;
             color: orangered;
         }
-
         .button6 {
             background-color: transparent;
         }
-
         .second-table {
             width: 100%;
             margin-top: 1rem;
         }
-
         .second-table table {
             width: 100%;;
         }
-
         .second-table table thead tr th,
         .second-table table tbody tr td {
             text-align: center;
             border-bottom: 1px solid #ddd;
             padding: 10px;
         }
-
         .second-table table thead {
             background-color: #b4b4b4;
         }
-
         /* main-three-top */
         .main-three-top {
             width: 100%;
@@ -292,8 +247,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        /* CSS cho phân trang */
         .page {
             display: flex;
             justify-content: center;
@@ -301,11 +254,9 @@
             padding: 0;
             margin: 20px 0;
         }
-
         .page li {
             margin: 0 5px;
         }
-
         .page li a {
             display: block;
             padding: 8px 16px;
@@ -315,25 +266,21 @@
             border-radius: 4px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
         .page li a:hover {
             background-color: #007bff;
             color: white;
         }
-
         .page li.active a {
             background-color: #007bff;
             color: black;
             border-color: #007bff;
         }
-
         .page li[aria-disabled="true"] a {
             pointer-events: none;
             color: #ddd;
             border-color: #ddd;
             background-color: #f8f9fa;
         }
-
     </style>
 </head>
 
@@ -348,12 +295,11 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content dropdown">
                         <a href="#" class="dropdown-toggle">
                             <span class="icon"><i class="fa-solid fa-book"></i></span>
@@ -366,28 +312,24 @@
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-solid fa-ticket"></i></span>
                             <span class="title">Quản lý ưu đãi</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content dropdown">
                         <a href="#" class="dropdown-toggle">
                             <span class="icon"><i class="fa-solid fa-circle-question"></i></span>
@@ -399,21 +341,18 @@
                             <li><a href="#"><span>Yêu cầu liên hệ</span></a></li>
                         </ul>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-regular fa-comments"></i></span>
                             <span class="title">Quản lý tin nhắn</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-regular fa-bell"></i></span>
                             <span class="title">Quản lý thông báo</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
@@ -424,23 +363,22 @@
             </div>
         </div>
     </aside>
-
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
                 <h1>Danh sách học viên</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
-                    <span><svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                    <span>
+                        <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
                                       fill="#000000"/>
-                            </svg>
-                            Danh sách sinh viên
-                        </span>
+                        </svg>
+                    </span>
+                    <span>Danh sách sinh viên</span>
                 </div>
             </div>
-
             <div class="main-information">
                     <span class="icon">
                         <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
@@ -464,10 +402,9 @@
                     <br>
                     <span>Tất cả học viên</span>
                 </div>
-
                 <div class="second-content-operation">
                     <div class="search-box">
-                        <form action="/search" method="get">
+                        <form action="/user/search" method="get">
                             <div class="input-group">
                                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
                                 <input type="search" name="keyword"
@@ -475,8 +412,6 @@
                             </div>
                         </form>
                     </div>
-
-
                     <div class="opera-button">
                         <button class="button1">
                             <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none"
@@ -490,7 +425,6 @@
                             </svg>
                         </button>
                     </div>
-
                     <div class="opera-button">
                         <button class="button2">
                             <svg fill="#ffffff" height="28px" width="28px" version="1.1" id="Capa_1"
@@ -518,13 +452,13 @@
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M14,31h32c6.065,0,11-4.935,11-11S52.065,9,46,9H16.414l7.293-7.293c0.391-0.391,0.391-1.023,0-1.414s-1.023-0.391-1.414,0
-	l-8.999,8.999c-0.093,0.093-0.166,0.203-0.217,0.326c-0.101,0.244-0.101,0.52,0,0.764c0.051,0.123,0.124,0.233,0.217,0.326
-	l8.999,8.999C22.488,19.902,22.744,20,23,20s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L16.414,11H46
-	c4.962,0,9,4.037,9,9s-4.038,9-9,9H14C7.935,29,3,33.935,3,40s4.935,11,11,11h29.586l-7.293,7.293c-0.391,0.391-0.391,1.023,0,1.414
-	C36.488,59.902,36.744,60,37,60s0.512-0.098,0.707-0.293l8.999-8.999c0.093-0.093,0.166-0.203,0.217-0.326
-	c0.101-0.244,0.101-0.52,0-0.764c-0.051-0.123-0.124-0.233-0.217-0.326l-8.999-8.999c-0.391-0.391-1.023-0.391-1.414,0
-	s-0.391,1.023,0,1.414L43.586,49H14c-4.962,0-9-4.037-9-9S9.038,31,14,31z"/>
-                                </svg>
+	                                    l-8.999,8.999c-0.093,0.093-0.166,0.203-0.217,0.326c-0.101,0.244-0.101,0.52,0,0.764c0.051,0.123,0.124,0.233,0.217,0.326
+	                                    l8.999,8.999C22.488,19.902,22.744,20,23,20s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L16.414,11H46
+	                                    c4.962,0,9,4.037,9,9s-4.038,9-9,9H14C7.935,29,3,33.935,3,40s4.935,11,11,11h29.586l-7.293,7.293c-0.391,0.391-0.391,1.023,0,1.414
+	                                    C36.488,59.902,36.744,60,37,60s0.512-0.098,0.707-0.293l8.999-8.999c0.093-0.093,0.166-0.203,0.217-0.326
+	                                    c0.101-0.244,0.101-0.52,0-0.764c-0.051-0.123-0.124-0.233-0.217-0.326l-8.999-8.999c-0.391-0.391-1.023-0.391-1.414,0
+	                                    s-0.391,1.023,0,1.414L43.586,49H14c-4.962,0-9-4.037-9-9S9.038,31,14,31z"/>
+                            </svg>
                         </button>
                     </div>
 
@@ -535,7 +469,7 @@
                                 <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                                       stroke-linejoin="round"/>
                             </svg>
-                            <a style="color: white" href="/view-createUser">Thêm mới học viên</a>
+                            <a style="color: white" href="/user/view-create">Thêm mới học viên</a>
                         </button>
                     </div>
 
@@ -575,47 +509,48 @@
             <div class="second-table">
                 <table>
                     <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>Mã học viên</th>
-                        <th>Học và tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Email</th>
-                        <th>Ngày sinh</th>
-                        <th>Giới tính</th>
-                        <th>Địa chỉ</th>
-                        <th>Trạng thái</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Mã học viên</th>
+                            <th>Học và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <td><c:if test="${empty listUsers}">
-                        <p>${emptyData}</p>
-                    </c:if></td>
-                    <c:forEach items="${listUsers}" var="users">
-                        <tr>
-                            <td></td>
-                            <td>${users.usersCode}</td>
-                            <td>${users.usersName}</td>
-                            <td>${users.usersPhone}</td>
-                            <td>${users.usersEmail}</td>
-                            <td><fmt:formatDate value="${users.usersBirthday}" pattern="dd-MM-yyyy"/></td>
-                            <td>${users.usersGender == 0 ? 'Nam':'Nữ'}</td>
-                            <td>${users.usersAddress}</td>
-                            <td>${users.usersStatus == true ? 'Đã Kích Hoạt' : 'Chưa Kích Hoạt'}</td>
-                            <td>
-                                <a href="/detail/${users.usersId}" class="deltail">Chi tiết</a>
-                                <a href="/delete/${users.usersId}" class="delete">Xóa</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                        <td>
+                            <c:if test="${empty listUsers}">
+                                <p>${emptyData}</p>
+                            </c:if>
+                        </td>
+                        <c:forEach items="${listUsers}" var="users">
+                            <tr>
+                                <td></td>
+                                <td>${users.usersCode}</td>
+                                <td>${users.usersName}</td>
+                                <td>${users.usersPhone}</td>
+                                <td>${users.usersEmail}</td>
+                                <td><fmt:formatDate value="${users.usersBirthday}" pattern="dd-MM-yyyy"/></td>
+                                <td>${users.usersGender == 0 ? 'Nam':'Nữ'}</td>
+                                <td>${users.usersAddress}</td>
+                                <td>${users.usersStatus == true ? 'Đã Kích Hoạt' : 'Chưa Kích Hoạt'}</td>
+                                <td>
+                                    <a href="/user/detail/${users.usersId}" class="deltail">Chi tiết</a>
+                                    <a href="/user/delete/${users.usersId}" class="delete">Xóa</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <div class="main-three-top">
-
             <div class="total">
                 <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
             </div>
@@ -627,7 +562,6 @@
                     <c:if test="${number > 0}">
                         <li><a href="?page=${number-1}">Previous</a></li>
                     </c:if>
-
                     <c:forEach begin="0" end="${totalPage-1}" var="i">
                         <c:choose>
                             <c:when test="${number == i}">
@@ -638,7 +572,6 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
-
                     <c:if test="${number < totalPage -1}">
                         <li><a href="?page=${number+1}">Next</a></li>
                     </c:if>
@@ -654,14 +587,11 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
         dropdownToggles.forEach(function (toggle) {
             toggle.addEventListener('click', function (event) {
                 event.preventDefault(); // Ngăn chặn việc theo liên kết
-
                 // Tìm phần tử cha là .dropdown
                 var parent = toggle.closest('.dropdown');
-
                 // Đóng tất cả các dropdown khác
                 var otherDropdowns = document.querySelectorAll('.dropdown-content.show');
                 otherDropdowns.forEach(function (dropdown) {
@@ -669,7 +599,6 @@
                         dropdown.classList.remove('show');
                     }
                 });
-
                 // Toggle phần tử dropdown hiện tại
                 var dropdownContent = parent.querySelector('.dropdown-content');
                 if (dropdownContent) {
@@ -691,5 +620,4 @@
     });
 </script>
 </body>
-
 </html>

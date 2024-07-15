@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/user")
 public class UsersController {
     @Autowired
     UserService userService;
@@ -34,13 +35,8 @@ public class UsersController {
     @Autowired
     TeacherService teacherService;
 
-    @GetMapping("/view")
-    private String Home(Model model) {
-        model.addAttribute("listUsers", userService.getAllUser());
-        return "/Users/user";
-    }
 
-    @GetMapping("/view-user")
+    @GetMapping()
     private String view_Home(Model model,
                              @RequestParam("page") Optional<Integer> page,
                              @RequestParam("size") Optional<Integer> size) {
@@ -82,31 +78,13 @@ public class UsersController {
         return "/Users/user";
     }
 
-    @GetMapping("/view-createUser")
+    @GetMapping("/view-create")
     private String addViewChucVu(Model model) {
         model.addAttribute("users", new Users());
         model.addAttribute("listStaffCskh", staffCskhService.getAllStaffCskh());
         model.addAttribute("listStaff", staffService.getAllStaff());
         model.addAttribute("listTeacher", teacherService.getAllTeacher());
         return "/Users/createUser";
-    }
-
-
-    @GetMapping("/detail/{usersId}")
-    private String detail(@PathVariable("usersId") Integer usersId, Model model) {
-        Users users = userService.getById(usersId);
-        model.addAttribute("users", users);
-        model.addAttribute("listStaffCskh", staffCskhService.getAllStaffCskh());
-        model.addAttribute("listStaff", staffService.getAllStaff());
-        model.addAttribute("listTeacher", teacherService.getAllTeacher());
-        return "/Users/detailUser";
-    }
-
-    @GetMapping("/delete/{usersId}")
-    private String delete(@PathVariable("usersId") Integer usersId, Model model) {
-        Users users = userService.getById(usersId);
-        userService.deleteUser(users);
-        return "redirect:/view-user";
     }
 
     private static final String UPLOAD_DIR = System.getProperty("user.dir") + "/uploads/";
@@ -139,7 +117,24 @@ public class UsersController {
         model.addAttribute("listStaff", staffService.getAllStaff());
         model.addAttribute("listTeacher", teacherService.getAllTeacher());
         userService.addUser(users);
-        return "/Users/createUser";
+        return "redirect:/user";
+    }
+
+    @GetMapping("/detail/{usersId}")
+    private String detail(@PathVariable("usersId") Integer usersId, Model model) {
+        Users users = userService.getById(usersId);
+        model.addAttribute("users", users);
+        model.addAttribute("listStaffCskh", staffCskhService.getAllStaffCskh());
+        model.addAttribute("listStaff", staffService.getAllStaff());
+        model.addAttribute("listTeacher", teacherService.getAllTeacher());
+        return "/Users/detailUser";
+    }
+
+    @GetMapping("/delete/{usersId}")
+    private String delete(@PathVariable("usersId") Integer usersId) {
+        Users users = userService.getById(usersId);
+        userService.deleteUser(users);
+        return "redirect:/user";
     }
 
     private String generateMaUsers() {
@@ -161,5 +156,4 @@ public class UsersController {
         }
         return maxMa;
     }
-
 }

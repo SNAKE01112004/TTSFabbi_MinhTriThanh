@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
     <link rel="stylesheet" href="asset/css/test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         * {
@@ -634,7 +635,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -647,7 +648,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="#"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -751,7 +752,7 @@
 
         <div class="main-bottom">
             <%-- form thêm ng dùng--%>
-            <form action="/add" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <span>Ảnh đại diện</span>
                 <div class="profile-section">
                     <div class="avatar">
