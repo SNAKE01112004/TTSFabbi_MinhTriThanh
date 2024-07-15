@@ -470,7 +470,7 @@
                                 <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                                       stroke-linejoin="round"/>
                             </svg>
-                            <a style="color: white" href="/view-createCategories">Thêm mới nhóm chương trình</a>
+                            <a style="color: white" href="/view-create-categories">Thêm mới nhóm chương trình</a>
                         </button>
                     </div>
 
@@ -513,7 +513,7 @@
                         <tr>
                             <td>
                             <td>${categories.categoriesName}</td>
-                            <td>${categories.categoriesName}</td>
+                            <td></td>
                             <td>${categories.categoriesTag}</td>
                             <td>${categories.createAt}</td>
                             <td>
