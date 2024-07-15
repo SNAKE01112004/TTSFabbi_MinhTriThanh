@@ -325,7 +325,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -338,7 +338,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="#"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -414,7 +414,7 @@
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
                                       fill="#000000"/>
                             </svg>
-                        <a href="/view-create-categories">Danh sách nhóm chương trình</a>
+                        <a href="/categories">Danh sách nhóm chương trình</a>
 
                         </span>
                     <span>
@@ -444,7 +444,7 @@
                 </div>
             </div>
         </div>
-        <form:form action="/add-categories" method="post" modelAttribute="categories">
+        <form:form action="/categories/add" method="post" modelAttribute="categories">
             <div class="main-container">
                 <div class="main-container-left">
                     <div class="form-group">
@@ -454,7 +454,7 @@
                         <form:errors path="categoriesName" cssStyle="color: #E63946" /><br>
                     </div>
                     <div class="form-group">
-                        <label for="categoriesTag">Từ khóa liên quan</label> kcan
+                        <label for="categoriesTag">Từ khóa liên quan</label>
                         <form:textarea path="categoriesTag" id="categoriesTag" cssClass="form-control"
                                        placeholder="Điền các từ khóa liên quan đến nhóm chương trình" />
                         <div class="note">Nhập dấu phẩy (,) sau mỗi từ khóa</div>
@@ -492,7 +492,7 @@
             </div>
             <div class="button-container">
                 <button class="btn cancel">Huỷ</button>
-                <button class="btn create" type="submit">Tạo</button>
+                <button class="btn create" type="submit">Lưu</button>
             </div>
         </form:form>
     </main>

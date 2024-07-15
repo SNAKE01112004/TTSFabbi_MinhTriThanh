@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
     <link rel="stylesheet" href="asset/css/test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         * {
@@ -23,7 +24,6 @@
             font-family: Arial, sans-serif;
             background-color: #fff;
         }
-
         body {
             width: 100%;
             height: 100vh;
@@ -32,7 +32,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
         }
-
         .container {
             width: 100%;
             height: 100%;
@@ -40,7 +39,6 @@
             display: grid;
             grid-template-columns: 17rem auto;
         }
-
         /* sidebar bên trái*/
         /* logo */
         aside {
@@ -50,7 +48,6 @@
             background-color: #fff;
             padding: 1rem;
         }
-
         .top-list-logo {
             width: 100%;
             margin: auto;
@@ -58,30 +55,25 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .top-list-logo img {
             padding: 9px 0px;
             max-width: 100%;
             height: auto;
         }
-
         .top-list-logo span {
             width: 90%;
             border: 1px solid rgb(0, 0, 0, 0.1);
             margin-top: 1rem;
         }
-
         /* CSS chung cho sidebar */
         .sidebar {
             width: 100%;
             margin-top: .5rem;
         }
-
         .sidebar ul li {
             position: relative;
             width: 100%;
         }
-
         .sidebar ul li a {
             width: 100%;
             display: flex;
@@ -95,22 +87,18 @@
             text-decoration: none;
             /* Loại bỏ gạch chân */
         }
-
         .sidebar ul li a span {
             color: #000000;
         }
-
         .sidebar ul li a .title {
             font-size: 1rem;
         }
-
         .sidebar ul li a:focus,
         .sidebar ul li a:focus span,
         .sidebar ul li a:focus .title {
             background-color: rgb(254, 119, 27);
             color: #ffffff;
         }
-
         /* dropdown */
         .dropdown-content {
             display: none;
@@ -118,17 +106,14 @@
             background-color: #b4b4b4;
             z-index: 1;
         }
-
         /* Khi dropdown có lớp 'show', nó sẽ hiển thị */
         .dropdown-content.show {
             display: block;
         }
-
         .dropdown-content a:focus {
             background-color: rgb(254, 119, 27);
             color: #ffffff;
         }
-
         /* main */
         /* main-content */
         .main-content {
@@ -136,7 +121,6 @@
             margin-left: 1.2rem;
             padding: 1.2rem;
         }
-
         /* main-top */
         .main-top {
             width: 100%;
@@ -147,29 +131,24 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .main-navigation {
             margin-top: .7rem;
         }
-
         .main-information {
             display: flex;
             align-items: center;
             gap: .6rem;
             height: 100%;
         }
-
         .main-information-line {
             height: 100%;
             border: 1px solid rgba(0, 0, 0, 0.2);
         }
-
         .main-information-account img {
             width: 3.5rem;
             height: 3.5rem;
             border-radius: 50%;
         }
-
         /* main-second-top */
         .main-second-top {
             margin-top: 1.5rem;
@@ -179,13 +158,11 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
         }
-
         .second-content-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         /* styles.css */
         body {
             font-family: Arial, sans-serif;
@@ -196,7 +173,6 @@
             margin: 0;
             background-color: #f4f4f4;
         }
-
         .profile-container {
             width: 400px;
             background-color: #fff;
@@ -204,13 +180,11 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         .avatar-section {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
-
         .avatar-wrapper {
             width: 100px;
             height: 100px;
@@ -219,13 +193,11 @@
             margin-right: 20px;
             border: 2px solid #ddd;
         }
-
         .avatar {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .upload-btn {
             padding: 10px 20px;
             border: none;
@@ -235,46 +207,38 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .upload-btn:hover {
             background-color: #0056b3;
         }
-
         .goal-section {
             margin-bottom: 20px;
         }
-
         .goal-input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .info-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
-
         .info-item {
             display: flex;
             flex-direction: column;
         }
-
         .info-item label {
             font-size: 12px;
             color: #666;
             margin-bottom: 5px;
         }
-
         .info-item input {
             padding: 10px;
             border: 1px solid #eee;
             border-radius: 5px;
             background-color: #f9f9f9;
         }
-
         /* main-container */
 
         .profile-container {
@@ -284,13 +248,11 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         .avatar-section {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
-
         .avatar-wrapper {
             width: 100px;
             height: 100px;
@@ -299,13 +261,11 @@
             margin-right: 20px;
             border: 2px solid #ddd;
         }
-
         .avatar {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .upload-btn {
             padding: 10px 20px;
             border: none;
@@ -316,11 +276,9 @@
             transition: background-color 0.3s;
             margin-right: 20px;
         }
-
         .upload-btn:hover {
             background-color: #0056b3;
         }
-
         .goal-input {
             flex-grow: 1;
             padding: 10px;
@@ -328,35 +286,29 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
         .info-section {
             margin-bottom: 20px;
         }
-
         .customer-info-section {
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             flex-wrap: wrap
         }
-
         h2 {
             font-size: 18px;
             margin-bottom: 10px;
             color: #333;
         }
-
         .info-item {
             display: flex;
             flex-direction: column;
             margin-bottom: 15px;
         }
-
         .info-item label {
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         .info-item input,
         .info-item select {
             padding: 10px;
@@ -364,40 +316,33 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
         .customer-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-
         .phone-input {
             display: flex;
             align-items: center;
         }
-
         .phone-input select {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
-
         .phone-input input {
             flex-grow: 1;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
-
         .password-input {
             display: flex;
             align-items: center;
         }
-
         .password-input input {
             flex-grow: 1;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
-
         .toggle-password {
             padding: 10px;
             border: 1px solid #ccc;
@@ -407,15 +352,12 @@
             background-color: #f0f0f0;
             cursor: pointer;
         }
-
         .required {
             color: red;
         }
-
         .main-bottom {
             margin-top: 25px;
         }
-
         /* Phần profile section */
         .profile-section {
             display: flex;
@@ -423,7 +365,6 @@
             gap: 20px;
             margin-bottom: 20px;
         }
-
         /* Style cho phần ảnh đại diện */
         .avatar {
             width: 123px;
@@ -432,20 +373,17 @@
             overflow: hidden;
             background-color: #f0f0f0;
         }
-
         .avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         /* Style cho phần upload và nhập liệu */
         .upload-input-section {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
         .upload-button {
             display: inline-block;
             padding: 10px 20px;
@@ -458,66 +396,55 @@
             text-align: center;
             transition: background-color 0.3s;
         }
-
         .upload-button:hover {
             background-color: #d0d0d0;
         }
-
         .input-goal {
             width: 1390px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .basic-info {
             margin-top: 20px;
             width: 1000px;
         }
-
         .basic-info h2 {
             margin-bottom: 15px;
             font-size: 18px;
             color: #333;
         }
-
         .info-row {
             display: flex;
             gap: 20px;
             margin-bottom: 15px;
         }
-
         .info-item {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
-
         .info-item label {
             margin-bottom: 5px;
             font-weight: bold;
         }
-
         .info-item input {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
         }
-
         h2 {
             margin-bottom: 15px;
             font-size: 18px;
             color: #333;
         }
-
         .customer-form {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             font-size: 14px;
         }
-
         .form-group {
             flex: 1 1 calc(33.333% - 20px);
             min-width: 250px;
@@ -525,13 +452,11 @@
             flex-direction: column;
             margin-bottom: 20px;
         }
-
         .form-group label {
             margin-bottom: 5px;
             font-weight: bold;
             font-size: 14px;
         }
-
         .form-group input,
         .form-group select {
             padding: 10px;
@@ -540,33 +465,27 @@
             background-color: #fff;
             font-size: 14px;
         }
-
         .form-group input[type="date"] {
             color: #888;
         }
-
         .required {
             color: red;
             margin-left: 5px;
         }
-
         .password-wrapper {
             position: relative;
             display: flex;
             align-items: center;
         }
-
         .password-wrapper .toggle-password {
             position: absolute;
             right: 10px;
             cursor: pointer;
         }
-
         .phone-wrapper {
             display: flex;
             align-items: center;
         }
-
         .phone-wrapper select {
             margin-right: 10px;
             padding: 10px;
@@ -575,23 +494,19 @@
             background-color: #fff;
             font-size: 14px;
         }
-
         .phone-wrapper input {
             flex: 1;
             font-size: 14px;
         }
-
         .nangtam {
             display: flex;
         }
-
         .button-container {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
             margin-top: 20px;
         }
-
         .button-container .btn {
             padding: 10px 20px;
             font-size: 14px;
@@ -600,22 +515,18 @@
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
         .button-container .cancel {
             background-color: #f8d7da;
             color: #721c24;
         }
-
         .button-container .cancel:hover {
             background-color: #f5c6cb;
             color: #491217;
         }
-
         .button-container .create {
             background-color: #c3e6cb;
             color: #155724;
         }
-
         .button-container .create:hover {
             background-color: #b1dfbb;
             color: #0f3d1f;
@@ -634,7 +545,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -647,7 +558,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/view-categories"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -722,7 +633,7 @@
                         <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
                               fill="#000000"/>
                     </svg>
-                    <span><a style="color: #000" href="/view-user">Danh sách học viên</a></span>
+                    <span><a style="color: #000" href="/user">Danh sách học viên</a></span>
                     <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
@@ -751,7 +662,7 @@
 
         <div class="main-bottom">
             <%-- form thêm ng dùng--%>
-            <form action="/add" method="post" enctype="multipart/form-data">
+            <form action="/user/add" method="post" enctype="multipart/form-data">
                 <span>Ảnh đại diện</span>
                 <div class="profile-section">
                     <div class="avatar">
@@ -916,9 +827,7 @@
                     </select>
                 </div>
             </div>
-
         </div>
-
         <div class="button-container">
             <button class="btn cancel">Huỷ</button>
             <button class="btn create" type="submit">Tạo</button>

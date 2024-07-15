@@ -1,13 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="/asset/css/index.css">
+    <link rel="stylesheet" href="/asset/css/course.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
@@ -165,121 +167,109 @@
 
         /* main-second-top */
         .main-second-top {
-            margin-top: 1.5rem;
             width: 100%;
-            height: 35rem;
-            border-radius: .4rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .second-content-top {
+        h3 {
+            text-align: left;
+        }
+
+        .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
         }
 
-        /* main-second-content */
-        .second-content-top {
-            padding: 1rem;
+        .filters {
+            display: flex;
         }
 
-        .second-content-title span:first-child {
+        .filter-link {
+            padding: 10px 10px;
+            margin: 0 5px;
+            color: black;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        .second-content-title span:last-child {
-            color: #b4b4b4;
-            font-size: .8rem;
+        .filter-link.active {
+            color: #007bff;
         }
 
+        .search-and-create {
+            display: flex;
+            align-items: center;
+        }
 
-        .search-box {
-            position: relative;
+        .search-and-create input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             width: 300px;
         }
 
-        .search-box input {
-            width: 100%;
-            padding: 15px;
-            padding-left: 30px; /* Để có khoảng trống cho biểu tượng kính lúp */
-            border: 2px solid orange;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 16px;
-            pointer-events: none; /* Để không gây ảnh hưởng khi người dùng click vào */
-        }
-
-        .second-content-operation {
-            display: flex;
-            gap: 13px;
-        }
-
-        .opera-button button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8px 10px;
-            border-radius: 10px;
-        }
-
-        .opera-button button:hover {
+        .create-button, .filter-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
         }
 
-        .button1 {
-            background-color: grey;
+        .create-button {
+            background-color: #007bff;
+            color: white;
         }
-
-        .button2 {
-            background-color: pink;
+        .filter-button {
+            background-color: #f0f0f0;
+            color: black;
         }
-
-        .button3 {
-            background-color: green;
-        }
-
-        .button4 {
-            background-color: blue;
-            color: #ffffff;
-        }
-
-        .button5 {
-            background-color: orange;
-            border: 2px solid orangered;
-            color: orangered;
-        }
-
-        .button6 {
-            background-color: transparent;
-        }
-
-        .second-table {
+        .program-table {
             width: 100%;
-            margin-top: 1rem;
+            border-collapse: collapse;
         }
-
-        .second-table table {
-            width: 100%;;
-        }
-
-        .second-table table thead tr th,
-        .second-table table tbody tr td {
-            text-align: center;
+        .program-table th, .program-table td {
+            padding: 15px;
+            text-align: left;
             border-bottom: 1px solid #ddd;
-            padding: 10px;
+        }
+        .program-table th {
+            background-color: #f0f0f0;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 12px;
+            color: white;
         }
 
-        .second-table table thead {
-            background-color: #b4b4b4;
+        .status.published {
+            background-color: #28a745;
+        }
+
+        .status.draft {
+            background-color: #ffc107;
+        }
+
+        .status.disabled {
+            background-color: #dc3545;
+        }
+
+        .action-button {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            text-decoration: underline;
         }
 
         /* main-three-top */
@@ -290,41 +280,6 @@
             justify-content: space-between;
             align-items: center;
         }
-        .page {
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        .page li {
-            margin: 0 5px;
-        }
-        .page li a {
-            display: block;
-            padding: 8px 16px;
-            text-decoration: none;
-            color: #007bff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .page li a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-        .page li.active a {
-            background-color: #007bff;
-            color: black;
-            border-color: #007bff;
-        }
-        .page li[aria-disabled="true"] a {
-            pointer-events: none;
-            color: #ddd;
-            border-color: #ddd;
-            background-color: #f8f9fa;
-        }
-
     </style>
 </head>
 
@@ -339,7 +294,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/user">
+                        <a href="/view-user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -352,7 +307,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="#"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -419,7 +374,7 @@
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Danh sách nhóm chương trình</h1>
+                <h1>Danh sách chương trình</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
                     <span><svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
@@ -427,7 +382,7 @@
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
                                       fill="#000000"/>
                             </svg>
-                            Danh sách nhóm chương trình
+                            Danh sách chương trình
                         </span>
                 </div>
             </div>
@@ -450,116 +405,92 @@
         </div>
 
         <div class="main-second-top">
-            <div class="second-content-top">
-                <div class="second-content-title">
-                    <span>Quản lý nhóm chương trình</span>
-                    <br>
-                    <span>Tất cả nhóm chương trình</span>
-                </div>
-
-                <div class="second-content-operation">
-                    <div class="search-box">
-                        <form action="/categories/search" method="get">
-                            <div class="input-group">
-                                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-                                <input type="search" name="keyword" placeholder="Tìm kiếm theo tên nhóm chương trình">
-                            </div>
-                        </form>
+            <h3>Quản lý danh sách chương trình</h1>
+                <div class="controls">
+                    <div class="filters">
+                        <a href="#" class="filter-link active">Tất cả</a>
+                        <a href="#" class="filter-link">Chương trình thường</a>
+                        <a href="#" class="filter-link">Chương trình VIP</a>
+                        <a href="#" class="filter-link">Chương trình phiếu</a>
                     </div>
-
-                    <div class="opera-button">
-                        <button class="button4">
-                            <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-                            <a style="color: white" href="/categories/view-create">Thêm mới nhóm chương trình</a>
-                        </button>
-                    </div>
-
-                    <div class="opera-button">
-                        <button class="button6">
-                            <svg width="28px" height="28px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
-                                 stroke-width="3" stroke="#000000" fill="none">
-                                <path d="M46.31,56.71H17.69a.1.1,0,0,1-.1-.08L12.52,15.25c0-.06,0-.1.1-.1H51.38c.06,0,.11,0,.1.1L46.41,56.63A.1.1,0,0,1,46.31,56.71Z"
-                                      stroke-linecap="round"/>
-                                <path d="M46.34,7.29H17.66a.1.1,0,0,0-.09,0l-5,7.68a.09.09,0,0,0,.09.14H51.32a.09.09,0,0,0,.09-.14l-5-7.68A.1.1,0,0,0,46.34,7.29Z"
-                                      stroke-linecap="round"/>
-                                <path d="M29.94,41.56H22.45a1,1,0,0,1-.84-1.46l3.31-5.59" stroke-linecap="round"/>
-                                <path d="M35.28,41.56h6.27a1,1,0,0,0,.84-1.46l-3.81-6.44" stroke-linecap="round"/>
-                                <path d="M27,31l4.15-7a1,1,0,0,1,1.66,0l3.27,5.53" stroke-linecap="round"/>
-                                <path d="M37.86,38.68l-2.78,2.81a.1.1,0,0,0,0,.14l2.78,3" stroke-linecap="round"/>
-                                <path d="M26.21,38l-1.29-3.48s0,0-.06,0l-4.38.88" stroke-linecap="round"/>
-                                <polyline points="32.28 28.86 36.1 29.48 37.52 25.82" stroke-linecap="round"/>
-                            </svg>
-                            <span>Xóa</span>
-                        </button>
+                    <div class="search-and-create">
+                        <input type="text" placeholder="Tìm kiếm theo tên chương trình">
+                        <button class="create-button">Tạo mới chương trình</button>
+                        <button class="filter-button">Lọc</button>
                     </div>
                 </div>
-            </div>
-
-            <div class="second-table">
-                <table>
+                <table class="program-table">
                     <thead>
                     <tr>
-                        <th><input type="checkbox"></th>
-                        <th>Tên nhóm</th>
-                        <th>Số lượng chương trình</th>
-                        <th>Từ khoá liên quan</th>
-                        <th>Ngày Tạo</th>
-                        <th>Ngày Cập Nhật Gần Nhất</th>
-                        <th></th>
+                        <th>Tên chương trình</th>
+                        <th>Trạng thái</th>
+                        <th>Chuyên gia</th>
+                        <th>Chi phí chương trình</th>
+                        <th>Nhóm chương trình</th>
+                        <th>Số lượng buổi học</th>
+                        <th>Số lượng học viên</th>
+                        <th>Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${listCategories}" var="categories">
-                        <tr>
-                            <td>
-                            <td>${categories.categoriesName}</td>
-                            <td></td>
-                            <td>${categories.categoriesTag}</td>
-                            <td>${categories.createAt}</td>
-                            <td>
-                                <a href="/categories/view-update/${categories.categoriesId}" class="deltail" >Chỉnh sửa</a>
-                                <a href="/categories/delete/${categories.categoriesId}" class="delete">Xóa</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                    <!-- Example row -->
+                    <tr>
+                        <td>Duy test live phiếu</td>
+                        <td><span class="status published">Đã xuất bản</span></td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Âm nhạc 123</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td><a href="#" class="action-button">Vô hiệu hóa</a></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
                     </tbody>
                 </table>
-            </div>
         </div>
 
         <div class="main-three-top">
             <div class="total">
-                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
+                <span>Hiển thị 1 đến 10 trong 3358 bản ghi</span>
             </div>
+
             <div class="page">
-                <c:if test="${totalPage >0}">
-                    <c:if test="${number <= 0}">
-                        <li aria-disabled="true"><a href="#">Previous</a></li>
+                <nav aria-label="Page navigation example">
+                    <c:if test="${not empty usersPage and usersPage.totalPages > 0}">
+                        <ul class="pagination justify-content-end">
+                            <!-- Previous Page Link -->
+                            <c:if test="${usersPage.hasPrevious()}">
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=${usersPage.number - 1}">Previous</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${!usersPage.hasPrevious()}">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li>
+                            </c:if>
+
+                            <!-- Page Numbers -->
+                            <c:forEach var="i" begin="0" end="${usersPage.totalPages - 1}">
+                                <li class="page-item <c:if test='${i == usersPage.number}'>active</c:if>'">
+                                    <a class="page-link" href="?page=${i}">${i + 1}</a>
+                                </li>
+                            </c:forEach>
+
+                            <!-- Next Page Link -->
+                            <c:if test="${usersPage.hasNext()}">
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=${usersPage.number + 1}">Next</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${!usersPage.hasNext()}">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Next</a>
+                                </li>
+                            </c:if>
+                        </ul>
                     </c:if>
-                    <c:if test="${number > 0}">
-                        <li><a href="?page=${number-1}">Previous</a></li>
-                    </c:if>
-                    <c:forEach begin="0" end="${totalPage-1}" var="i">
-                        <c:choose>
-                            <c:when test="${number == i}">
-                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><a href="?page=${i}">${i+1}</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <c:if test="${number < totalPage -1}">
-                        <li><a href="?page=${number+1}">Next</a></li>
-                    </c:if>
-                    <c:if test="${number >= totalPage-1}">
-                        <li aria-disabled="true"><a  href="#">Next</a></li>
-                    </c:if>
-                </c:if>
+                </nav>
             </div>
         </div>
     </main>
@@ -572,10 +503,8 @@
         dropdownToggles.forEach(function (toggle) {
             toggle.addEventListener('click', function (event) {
                 event.preventDefault(); // Ngăn chặn việc theo liên kết
-
                 // Tìm phần tử cha là .dropdown
                 var parent = toggle.closest('.dropdown');
-
                 // Đóng tất cả các dropdown khác
                 var otherDropdowns = document.querySelectorAll('.dropdown-content.show');
                 otherDropdowns.forEach(function (dropdown) {
@@ -591,7 +520,6 @@
                 }
             });
         });
-
         // Đóng dropdown nếu click ra ngoài
         document.addEventListener('click', function (event) {
             var isClickInsideDropdown = event.target.closest('.dropdown');
