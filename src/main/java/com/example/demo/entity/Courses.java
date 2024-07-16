@@ -1,15 +1,20 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor //
 @Entity
 @Table(name = "courses")
-public class Courses {
+public class Courses extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courses_id")
@@ -30,6 +35,9 @@ public class Courses {
     @Column(name = "courses_type")
     private Boolean coursesType;
 
+    @Column(name = "courses_price")
+    private BigDecimal coursesPrice;
+
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacherId;
@@ -37,20 +45,4 @@ public class Courses {
     @ManyToOne
     @JoinColumn(name = "categories_id")
     private Categories categoriesId;
-
-    @ManyToOne
-    @JoinColumn(name = "courses_classify_id")
-    private CoursesClassify coursesClassifyId;
-
-    @Column(name = "course_route")
-    private Boolean courseRoute;
-
-    @Column(name = "time_active")
-    private Integer timeActive;
-
-    @Column(name = "course_video")
-    private String courseVideo;
-
-    @Column(name = "course_image")
-    private String courseImage;
 }

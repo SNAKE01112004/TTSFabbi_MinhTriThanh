@@ -353,7 +353,7 @@
                         </a>
                         <ul class="dropdown-content">
                             <li><a href="#"><span>Danh sách nhóm chương trình</span></a></li>
-                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>

@@ -16,7 +16,9 @@ public class UserServiceimpl implements UserService {
     private UsersReponsitory usersResponsitory;
 
     @Override
-    public Page<Users> getAllListUser(Pageable pageable) { return usersResponsitory.findAll(pageable); }
+    public Page<Users> getAllListUser(Pageable pageable) {
+        return usersResponsitory.findAll(pageable);
+    }
 
     @Override
     public List<Users> getAllUser() {

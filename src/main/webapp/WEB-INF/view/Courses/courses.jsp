@@ -200,7 +200,7 @@
         }
 
         .filter-link.active {
-            color: #007bff;
+            color: #FE771B;
         }
 
         .search-and-create {
@@ -280,6 +280,40 @@
             justify-content: space-between;
             align-items: center;
         }
+        .page {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .page li {
+            margin: 0 5px;
+        }
+        .page li a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .page li a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .page li.active a {
+            background-color: #007bff;
+            color: black;
+            border-color: #007bff;
+        }
+        .page li[aria-disabled="true"] a {
+            pointer-events: none;
+            color: #ddd;
+            border-color: #ddd;
+            background-color: #f8f9fa;
+        }
     </style>
 </head>
 
@@ -294,7 +328,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -307,7 +341,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -405,22 +439,22 @@
         </div>
 
         <div class="main-second-top">
-            <h3>Quản lý danh sách chương trình</h1>
-                <div class="controls">
-                    <div class="filters">
-                        <a href="#" class="filter-link active">Tất cả</a>
-                        <a href="#" class="filter-link">Chương trình thường</a>
-                        <a href="#" class="filter-link">Chương trình VIP</a>
-                        <a href="#" class="filter-link">Chương trình phiếu</a>
-                    </div>
-                    <div class="search-and-create">
-                        <input type="text" placeholder="Tìm kiếm theo tên chương trình">
-                        <button class="create-button">Tạo mới chương trình</button>
-                        <button class="filter-button">Lọc</button>
-                    </div>
+            <h3>Quản lý danh sách chương trình</h3>
+            <div class="controls">
+                <div class="filters">
+                    <a href="#" class="filter-link active">Tất cả</a>
+                    <a href="#" class="filter-link">Chương trình thường</a>
+                    <a href="#" class="filter-link">Chương trình VIP</a>
+                    <a href="#" class="filter-link">Chương trình phiếu</a>
                 </div>
-                <table class="program-table">
-                    <thead>
+                <div class="search-and-create">
+                    <input type="text" placeholder="Tìm kiếm theo tên chương trình">
+                    <button class="create-button">Tạo mới chương trình</button>
+                    <button class="filter-button">Lọc</button>
+                </div>
+            </div>
+            <table class="program-table">
+                <thead>
                     <tr>
                         <th>Tên chương trình</th>
                         <th>Trạng thái</th>
@@ -431,66 +465,52 @@
                         <th>Số lượng học viên</th>
                         <th>Hành động</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Example row -->
+                </thead>
+                <tbody>
+<%--                   <c:forEach items="${listCourses}" var="courses">--%>
                     <tr>
-                        <td>Duy test live phiếu</td>
+                        <td>Lực Test<%--${courses.coursesName}--%></td>
                         <td><span class="status published">Đã xuất bản</span></td>
-                        <td></td>
+                        <td>Nguyễn Thị Lanh<%--${courses.teacherId}--%></td>
                         <td>0</td>
-                        <td>Âm nhạc 123</td>
+                        <td>Audio cho cả gia đình<%--${courses.categoriesId}--%></td>
                         <td>1</td>
                         <td>0</td>
                         <td><a href="#" class="action-button">Vô hiệu hóa</a></td>
                     </tr>
-                    <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
         </div>
 
         <div class="main-three-top">
             <div class="total">
-                <span>Hiển thị 1 đến 10 trong 3358 bản ghi</span>
+                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
             </div>
-
             <div class="page">
-                <nav aria-label="Page navigation example">
-                    <c:if test="${not empty usersPage and usersPage.totalPages > 0}">
-                        <ul class="pagination justify-content-end">
-                            <!-- Previous Page Link -->
-                            <c:if test="${usersPage.hasPrevious()}">
-                                <li class="page-item">
-                                    <a class="page-link" href="?page=${usersPage.number - 1}">Previous</a>
-                                </li>
-                            </c:if>
-                            <c:if test="${!usersPage.hasPrevious()}">
-                                <li class="page-item disabled">
-                                    <a class="page-link">Previous</a>
-                                </li>
-                            </c:if>
-
-                            <!-- Page Numbers -->
-                            <c:forEach var="i" begin="0" end="${usersPage.totalPages - 1}">
-                                <li class="page-item <c:if test='${i == usersPage.number}'>active</c:if>'">
-                                    <a class="page-link" href="?page=${i}">${i + 1}</a>
-                                </li>
-                            </c:forEach>
-
-                            <!-- Next Page Link -->
-                            <c:if test="${usersPage.hasNext()}">
-                                <li class="page-item">
-                                    <a class="page-link" href="?page=${usersPage.number + 1}">Next</a>
-                                </li>
-                            </c:if>
-                            <c:if test="${!usersPage.hasNext()}">
-                                <li class="page-item disabled">
-                                    <a class="page-link">Next</a>
-                                </li>
-                            </c:if>
-                        </ul>
+                <c:if test="${totalPage >0}">
+                    <c:if test="${number <= 0}">
+                        <li aria-disabled="true"><a href="#">Previous</a></li>
                     </c:if>
-                </nav>
+                    <c:if test="${number > 0}">
+                        <li><a href="?page=${number-1}">Previous</a></li>
+                    </c:if>
+                    <c:forEach begin="0" end="${totalPage-1}" var="i">
+                        <c:choose>
+                            <c:when test="${number == i}">
+                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="?page=${i}">${i+1}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${number < totalPage -1}">
+                        <li><a href="?page=${number+1}">Next</a></li>
+                    </c:if>
+                    <c:if test="${number >= totalPage-1}">
+                        <li aria-disabled="true"><a  href="#">Next</a></li>
+                    </c:if>
+                </c:if>
             </div>
         </div>
     </main>
