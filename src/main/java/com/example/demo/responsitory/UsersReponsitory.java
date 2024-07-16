@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface UsersReponsitory extends JpaRepository<Users,Integer> {
     Page<Users> findAll(Pageable pageable);
-    // mà ko phải mỗi thằng user đâu cả thằng categorises nữa cx chạy đc
     @Query("SELECT us FROM Users us where us.usersCode like %:keyword%")
     List<Users> findByUsersCode(@Param("keyword") String keyword);
 }
