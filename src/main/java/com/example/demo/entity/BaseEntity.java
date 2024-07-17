@@ -1,15 +1,9 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -17,25 +11,35 @@ import java.util.Date;
 @Getter
 @Setter
 public abstract class BaseEntity {
-    @CreatedDate
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
-    private Date createAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private Date createdAt;
 
-    @CreatedBy
     @Column(name = "created_by", updatable = false)
     private String createdBy;
 
-    @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;
 
-    @LastModifiedBy
     @Column(name = "updated_by")
-    private String updateBy;
+    private String updatedBy;
 
-    @Getter @Setter
     @Column(name = "deleted_flag")
     private Boolean deletedFlag = false;
+
+    @PrePersist
+    private void onCreate() {
+        Date now = new Date();
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        this.updatedAt = new Date();
+    }
 }
