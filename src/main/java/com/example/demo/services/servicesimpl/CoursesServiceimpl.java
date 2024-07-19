@@ -25,6 +25,11 @@ public class CoursesServiceimpl implements CoursesService {
         return coursesReponsitory.findAll(pageable);
     }
 
+    @Override
+    public List<Courses> searchByCoursesName(String keyword) {
+        return coursesReponsitory.findByCoursesCode(keyword);
+    }
+
 
     @Override
     public Courses getById(Integer id) {

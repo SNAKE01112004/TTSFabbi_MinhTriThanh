@@ -1,6 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,9 +204,11 @@
                             <td>${categories.categoriesName}</td>
                             <td>12</td>
                             <td>${categories.categoriesTag}</td>
-<%--                            <td>${categories.createdAt}</td>--%>
                             <td>
                                 <fmt:formatDate value="${categories.createdAt}" pattern="dd-MM-yyyy HH:mm" />
+                            </td>
+                            <td>
+                                <fmt:formatDate value="${categories.updatedAt}" pattern="dd-MM-yyyy HH:mm"/>
                             </td>
                             <td>
                                 <a href="/categories/view-update/${categories.categoriesId}" class="deltail" >Chỉnh sửa</a>

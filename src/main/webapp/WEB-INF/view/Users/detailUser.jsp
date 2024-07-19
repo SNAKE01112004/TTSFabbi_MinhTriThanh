@@ -277,7 +277,6 @@
                     <label for="">NHÂN VIÊN KINH DOANH</label>
                     <select name="staffId" disabled>
                         <option value="${nv.staffId == users.staffId.staffId}">${users.staffId.staffName}</option>
-                        <!-- Thêm các quốc gia khác nếu cần -->
                     </select>
                 </div>
                 <div class="form-group">
@@ -290,7 +289,6 @@
 
         </div>
         </form>
-        <%--        đến đây thôi--%>
     </main>
 </div>
 

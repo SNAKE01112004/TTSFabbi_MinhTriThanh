@@ -14,27 +14,7 @@ public class CoursesClassifyServiceimpl implements CoursesClassifyService {
     private CoursesClassifyRepository coursesClassifyRepository;
 
     @Override
-    public List<CoursesClassify> getAllUser() {
+    public List<CoursesClassify> getAllCoursesClassify() {
         return coursesClassifyRepository.findAll();
-    }
-
-    @Override
-    public CoursesClassify getById(Integer id) {
-        return coursesClassifyRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void addCoursesClassify(CoursesClassify coursesClassify) {
-        coursesClassifyRepository.save(coursesClassify);
-    }
-
-    @Override
-    public void updateCoursesClassify(CoursesClassify coursesClassify) {
-        coursesClassifyRepository.save(coursesClassify);
-    }
-
-    @Override
-    public void deleteCoursesClassify(CoursesClassify coursesClassify) {
-        coursesClassifyRepository.save(coursesClassify);
     }
 }

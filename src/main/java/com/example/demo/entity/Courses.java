@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor //
+@NoArgsConstructor
 @Entity
 @Table(name = "courses")
 public class Courses extends BaseEntity {
@@ -35,12 +35,28 @@ public class Courses extends BaseEntity {
     @Column(name = "courses_type")
     private Boolean coursesType;
 
-    @Column(name = "courses_price")
-    private BigDecimal coursesPrice;
-
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacherId;
+
+    @Column(name = "efective_duration_money")
+    private BigDecimal efectiveDurationMoney;
+
+    @Column(name = "courses_route")
+    private Boolean coursesRoute;
+
+    @Column(name = "courses_active")
+    private Integer coursesActive;
+
+    @Column(name = "courses_video")
+    private String coursesVideo;
+
+    @Column(name = "courses_image")
+    private String coursesImage;
+
+    @ManyToOne
+    @JoinColumn(name = "courses_classify_id")
+    private CoursesClassify coursesClassifyId;
 
     @ManyToOne
     @JoinColumn(name = "categories_id")

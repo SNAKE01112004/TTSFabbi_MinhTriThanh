@@ -19,5 +19,5 @@ public class CoursesClassify {
     private Integer coursesClassifyId;
 
     @Column(name = "courses_classify_name")
-    private Integer coursesClassifyName;
+    private String coursesClassifyName;
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public interface CoursesService {
     List<Courses> GetAllCourses();
     Page<Courses> getAllListCourses(Pageable pageable);
+    List<Courses> searchByCoursesName(String keyword);
     Courses getById(Integer id);
     void addCourses(Courses courses);
     void updateCourses(Courses courses);

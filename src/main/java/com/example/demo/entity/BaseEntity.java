@@ -11,8 +11,6 @@ import java.util.Date;
 @Getter
 @Setter
 public abstract class BaseEntity {
-
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date createdAt;
@@ -20,7 +18,6 @@ public abstract class BaseEntity {
     @Column(name = "created_by", updatable = false)
     private String createdBy;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date updatedAt;

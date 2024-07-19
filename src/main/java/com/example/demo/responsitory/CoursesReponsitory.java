@@ -14,4 +14,6 @@ import java.util.List;
 @Repository
 public interface CoursesReponsitory extends JpaRepository<Courses, Integer> {
      Page<Courses> findAll(Pageable pageable);
+     @Query("SELECT us from Courses us where us.coursesName like %:keyword%")
+     List<Courses> findByCoursesCode(@Param("keyword") String keyword);
 }

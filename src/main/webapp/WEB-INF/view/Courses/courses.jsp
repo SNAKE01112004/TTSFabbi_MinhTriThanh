@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Courses/courses.css">
+    <link rel="stylesheet" href="/asset/css/course.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -38,7 +39,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="categories"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
@@ -145,43 +146,64 @@
                     <a href="#" class="filter-link">Chương trình phiếu</a>
                 </div>
                 <div class="search-and-create">
-                    <input type="text" placeholder="Tìm kiếm theo tên chương trình">
-                    <button class="create-button">Tạo mới chương trình</button>
+                    <form action="/courses/search" method="get">
+                        <input type="search" name="keyword" placeholder="Tìm kiếm theo tên chương trình">
+                    </form>
+                    <button class="create-button" onclick="showModal()">Tạo mới chương trình</button>
                     <button class="filter-button">Lọc</button>
+                </div>
+                <div class="overlay" id="overlay">
+                    <div class="container-overlay">
+                        <button class="close-btn" onclick="closeModal()">x</button>
+                        <h1>Tạo mới chương trình</h1>
+                        <div class="button-group">
+                            <a href="/courses/view-create">Tạo mới chương trình</a>
+                            <a onclick="createFunnelProgram()">Tạo mới chương trình phễu</a>
+                            <a onclick="createLiveExpertProgram()">Tạo mới chương trình live chuyên gia</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <table class="program-table">
                 <thead>
-                    <tr>
-                        <th>Tên chương trình</th>
-                        <th>Trạng thái</th>
-                        <th>Chuyên gia</th>
-                        <th>Chi phí chương trình</th>
-                        <th>Nhóm chương trình</th>
-                        <th>Số lượng buổi học</th>
-                        <th>Số lượng học viên</th>
-                        <th>Hành động</th>
-                    </tr>
+                <tr>
+                    <th>Tên chương trình</th>
+                    <th>Trạng thái</th>
+                    <th>Chuyên gia</th>
+                    <th>Chi phí chương trình</th>
+                    <th>Nhóm chương trình</th>
+                    <th>Số lượng buổi học</th>
+                    <th>Số lượng học viên</th>
+                    <th>Hành động</th>
+                </tr>
                 </thead>
                 <tbody>
-<%--                   <c:forEach items="${listCourses}" var="courses">--%>
-<%--                       <tr>--%>
-<%--                           <td>${courses.coursesName}</td>--%>
-<%--                           <td>12</td>--%>
-<%--                           <td>${courses.coursesCustomerDescription}</td>--%>
-<%--                           <td>${courses.createAt}</td> --%>
-<%--                       </tr>--%>
-<%--                   </c:forEach>--%>
+                <td>
+                    <c:if test="${empty listCourses}">
+                        <p>${emptyData}</p>
+                    </c:if>
+                </td>
+                <c:forEach items="${listCourses}" var="courses">
                     <tr>
-                        <td>Lực Test<%--${courses.coursesName}--%></td>
+                        <td><a href="/courses/detail/${courses.coursesId}" class="courses.coursesId">${courses.coursesName}</a></td>
                         <td><span class="status published">Đã xuất bản</span></td>
-                        <td>Nguyễn Thị Lanh<%--${courses.teacherId}--%></td>
-                        <td>0</td>
-                        <td>Audio cho cả gia đình<%--${courses.categoriesId}--%></td>
+                        <td>${courses.teacherId.teacherName}</td>
+                        <td>${courses.efectiveDurationMoney}</td>
+                        <td>${courses.categoriesId.categoriesName}</td>
                         <td>1</td>
                         <td>0</td>
-                        <td><a href="#" class="action-button">Vô hiệu hóa</a></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn">Actions <i class="fa-solid fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <button onclick="selectOption(this, 'Nháp')">Nháp</button>
+                                    <button onclick="selectOption(this, 'Xuất bản')">Xuất bản</button>
+                                    <button onclick="selectOption(this, 'Vô hiệu hoá')">Vô hiệu hoá</button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -212,7 +234,7 @@
                         <li><a href="?page=${number+1}">Next</a></li>
                     </c:if>
                     <c:if test="${number >= totalPage-1}">
-                        <li aria-disabled="true"><a  href="#">Next</a></li>
+                        <li aria-disabled="true"><a href="#">Next</a></li>
                     </c:if>
                 </c:if>
             </div>
@@ -221,6 +243,19 @@
 </div>
 
 <script>
+    function selectOption(button, option) {
+        var dropdownButton = button.closest('.dropdown').querySelector('.dropbtn');
+        dropdownButton.innerHTML = option + ' <i class="fa-solid fa-caret-down"></i>';
+    }
+
+    function showModal() {
+        document.getElementById('overlay').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
