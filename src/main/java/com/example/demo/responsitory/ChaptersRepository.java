@@ -12,4 +12,8 @@ import java.util.List;
 public interface ChaptersRepository extends JpaRepository<Chapters, Integer> {
     @Query("SELECT us FROM Chapters us where us.chapterName like %:keyword%")
     List<Chapters> findByChapterName(@Param("keyword") String keyword);
+
+    @Query("SELECT c FROM Chapters c WHERE c.courses.coursesId = :coursesId")
+    List<Chapters> findByCoursesId(@Param("coursesId") Integer coursesId);
+
 }

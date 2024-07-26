@@ -90,8 +90,9 @@ public class UsersController {
     private static final String UPLOAD_DIR = System.getProperty("user.dir") + "/uploads/";
 
     @PostMapping("/add")
-    private String addChucVu(@Valid @ModelAttribute("users") Users users, BindingResult result,
-                             Model model, @RequestParam("file") MultipartFile file) {
+    private String addChucVu(@Valid @ModelAttribute("users") Users users,
+                             BindingResult result,
+                             @RequestParam("file") MultipartFile file, Model model) {
 
         String chemin = null;
         if (!file.isEmpty()) {

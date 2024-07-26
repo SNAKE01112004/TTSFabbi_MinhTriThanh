@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Courses/detailCourses.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Lesson/exercises.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/user">
+                        <a href="/view-user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,9 +37,9 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/categories"><span>Danh sách nhóm chương
+                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span><a href="/courses">Danh sách chương trình</a></span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,15 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>${coursesName}</span>
+                    <span>hỏi chấm</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>chấm hỏi</span>
                 </div>
             </div>
 
@@ -139,182 +147,72 @@
         </div>
 
         <div class="main-container">
-            <a href="/courses" class="back-button">Quay lại</a>
-            <div class="container">
-                <div class="info-section">
-                    <div class="info-header">
-                        Thông tin chương trình
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <span class="info-title">Tên chương trình</span>
-                            <span class="info-content" id="coursesName">${courses.coursesName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Phân loại chương trình</span>
-                            <span class="info-content" id="coursesClassifyId">${courses.coursesClassifyId.coursesClassifyName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Loại chương trình</span>
-                            <span class="info-content" id="coursesType">${courses.coursesType == 1 ? 'Vip' : 'Thường'}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Nhóm chương trình</span>
-                            <span class="info-content" id="categoriesId">${courses.categoriesId.categoriesName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chuyên gia hiển thị ở tổng quan</span>
-                            <span class="info-content" id="teacherId">${courses.teacherId.teacherName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chuyên gia phụ trách chấm bài</span>
-                            <span class="info-content">Không</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chi phí chương trình</span>
-                            <span class="info-content" id="efectiveDurationMoney">${courses.efectiveDurationMoney}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Lộ trình học</span>
-                            <span class="info-content" id="coursesRoute">${courses.coursesRoute == true ? 'Tuần tự' : 'Không tuần tự'}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượng buổi học</span>
-                            <span class="info-content">4</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Giới hạn thời gian đăng ký</span>
-                            <span class="info-content">-</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Thời gian tự động kích hoạt</span>
-                            <span class="info-content">${courses.coursesActive}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Giới hạn số lượng đăng ký</span>
-                            <span class="info-content">-</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượt mua hiển thị</span>
-                            <span class="info-content">1.000</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượt mua thực tế</span>
-                            <span class="info-content">0</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượng học viên</span>
-                            <span class="info-content">2</span>
-                        </div>
-                    </div>
-                    <div class="info-section">
-                        <hr class="section-divider">
-                        <div class="info-grid full-width">
-                            <div class="info-item">
-                                <span class="info-title" >Mô tả chương trình</span>
-                                <span class="info-content" id="coursesDescription">${courses.coursesDescription}</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-title">Đối tượng khách hàng</span>
-                                <span class="info-content" id="coursesCustomerDescription">${courses.coursesCustomerDescription}</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-title">Lợi ích khi mua chương trình</span>
-                                <span class="info-content" id="benifitBuyCourses">${courses.benifitBuyCourses}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- danh sách chương trình -->
-        <div class="container-footer">
-            <h2>Danh sách chương trong chương trình <span class="status-label">Đã xuất bản</span></h2>
-            <div class="tab-container">
-                <ul class="tab-list">
-                    <li class="tab-item active">Danh sách chương</li>
-                    <li class="tab-item">Danh sách học viên (6)</li>
-                    <li class="tab-item">Đơn hàng (0)</li>
-                </ul>
-                <div class="search-container">
-                    <input type="text" class="search-box" placeholder="Tìm kiếm theo chương học...">
-                    <button class="action-button">Tạo mới chương trình</button>
-                </div>
-            </div>
-            <table class="data-table">
-                <thead>
-                <tr>
-                    <th>Số thứ tự chương</th>
-                    <th>Tiêu đề chương</th>
-                    <th>Số lượng bài giảng</th>
-                    <th>Số lượng bài tập</th>
-                    <th>Tổng thời gian học</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listChapter}" var="chapter" varStatus="i">
-                    <tr>
-                        <td><a href="/courses/detail/${chapter.courses.coursesId}/chapter/${chapter.chapterId}">Chương học ${i.index+1}</a></td>
-                        <td>${chapter.chapterName}</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
+            <!-- Tabs for Navigation -->
+            <div class="tabs">
+                <div class="tab"><a href="/lessons">Danh sách bài giảng</a></div>
+                <div class="tab active">Danh sách bài tập chương</div>
 
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                <!-- Drag and Drop Instruction -->
+                <div class="instruction">Kéo thả để điều chỉnh vị trí bài giảng, bài tập chương</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-container-main">
+                <button class="btn-create" id="openModal">
+                    <i class="fas fa-plus"></i>
+                    <a href="/lessons/view-createExerises">Tạo mới bài tập chương</a>
+                </button>
+                <button class="btn-preview">
+                    <i class="fas fa-eye"></i>
+                    Xem trước giao diện học viên
+                </button>
+            </div>
         </div>
     </main>
-
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Tạo chương học mới</h2>
-            <form action="/courses/detail/${coursesId}/chapter/add" method="post">
-                <input type="text" name="chapterName" class="modal-input" placeholder="Tiêu đề chương học">
-                <div>
-                    <button class="btn cancel">Hủy</button>
-                    <button class="btn create" type="submit">Tạo</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 <script>
-    // Get elements
-    const actionButton = document.querySelector('.action-button');
-    const modal = document.querySelector('.modal');
-    const closeModal = document.querySelector('.close');
-    const formContainer = document.querySelector('.form-container');
-    const cancelButton = document.querySelector('.btn.cancel');
 
-    // Show modal and blur background
-    actionButton.addEventListener('click', function() {
-        modal.style.display = 'flex';
-        formContainer.classList.add('blurred');
+    // JavaScript to handle modal visibility
+    const openModalButton = document.getElementById('openModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const closeModalBottomButton = document.getElementById('closeModalBottom');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modal = document.getElementById('modal');
+
+    // Function to open the modal
+    openModalButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'flex'; // Show overlay with flex for centering
     });
 
-    // Close modal and unblur background
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-        formContainer.classList.remove('blurred');
+    // Function to close the modal
+    closeModalButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none'; // Hide overlay
+    });
+
+    // Another way to close the modal
+    closeModalBottomButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none'; // Hide overlay
     });
 
     // Close modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            formContainer.classList.remove('blurred');
+    window.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.style.display = 'none'; // Hide overlay
         }
     });
 
-    // Close modal when clicking the cancel button
-    cancelButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        formContainer.classList.remove('blurred');
+    // File upload functionality
+    const uploadLink = document.getElementById('uploadLink');
+    const fileInput = document.getElementById('fileInput');
+
+    uploadLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        fileInput.click(); // Programmatically click the hidden file input
+    });
+
+    fileInput.addEventListener('change', () => {
+        const fileName = fileInput.files[0].name; // Get the name of the selected file
+        alert(`File selected: ${fileName}`); // Display the file name (optional)
     });
 
     document.addEventListener('DOMContentLoaded', function () {

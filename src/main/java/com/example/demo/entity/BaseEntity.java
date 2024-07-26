@@ -26,7 +26,8 @@ public abstract class BaseEntity {
     private String updatedBy;
 
     @Column(name = "deleted_flag")
-    private Boolean deletedFlag = false;
+    private Integer deletedFlag;
+
 
     @PrePersist
     private void onCreate() {

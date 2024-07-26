@@ -25,7 +25,7 @@ public class Chapters {
 
     @ManyToOne
     @JoinColumn(name = "courses_id")
-    private Categories coursesId;
+    private Courses courses;
 
     @Column(name = "total_lecture")
     private Integer totalLecture;

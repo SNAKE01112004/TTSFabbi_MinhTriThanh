@@ -26,6 +26,16 @@ public class CoursesServiceimpl implements CoursesService {
     }
 
     @Override
+    public Page<Courses> getAllListCoursesByDeleted(Pageable pageable) {
+        return coursesReponsitory.getCoursesByDeletedFlag(pageable);
+    }
+
+    @Override
+    public void updateDeletedFlag(Integer coursesId, Integer deletedFlag) {
+        coursesReponsitory.updateDeletedFlag(coursesId, deletedFlag);
+    }
+
+    @Override
     public List<Courses> searchByCoursesName(String keyword) {
         return coursesReponsitory.findByCoursesCode(keyword);
     }
@@ -48,6 +58,12 @@ public class CoursesServiceimpl implements CoursesService {
 
     @Override
     public void deleteCourses(Courses courses) {
-        coursesReponsitory.save(courses);
+        coursesReponsitory.delete(courses);
     }
+
+    @Override
+    public List<Courses> findCoursesByType(int type) {
+        return coursesReponsitory.findCoursesByType(type);
+    }
+
 }

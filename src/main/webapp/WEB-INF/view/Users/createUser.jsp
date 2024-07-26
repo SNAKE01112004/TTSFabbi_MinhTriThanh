@@ -246,6 +246,7 @@
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
         <div>
             <h2>Phân quyền người dùng</h2>

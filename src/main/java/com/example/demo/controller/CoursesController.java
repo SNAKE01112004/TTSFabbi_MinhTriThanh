@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Categories;
+import com.example.demo.entity.Chapters;
 import com.example.demo.entity.Courses;
-import com.example.demo.entity.Users;
+import com.example.demo.exception.CoursesStatus;
 import com.example.demo.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +31,9 @@ public class CoursesController {
 
     @Autowired
     TeacherService teacherService;
+
+    @Autowired
+    ChapterService chapterService;
 
     @Autowired
     CategoriesService categoriesService;
@@ -41,23 +49,48 @@ public class CoursesController {
         int pageSize = size.orElse(10);
 
         Pageable pageable = PageRequest.of(currentPage, pageSize);
-        Page<Courses> coursesPage = coursesService.getAllListCourses(pageable);
+        Page<Courses> coursesPage = coursesService.getAllListCoursesByDeleted(pageable);
 
         int totalElement = (int) coursesPage.getTotalElements();
         int begin = currentPage * pageSize + 1;
-        int end = Math.min((currentPage +1)*pageSize,totalElement);
+        int end = Math.min((currentPage + 1) * pageSize, totalElement);
+
 
         model.addAttribute("totalPage", coursesPage.getTotalPages());
         model.addAttribute("begin", begin);
         model.addAttribute("number", currentPage);
         model.addAttribute("end", end);
         model.addAttribute("totalElement", totalElement);
-        model.addAttribute("listCourses",coursesPage.getContent());
+        model.addAttribute("listCourses", coursesPage.getContent());
         return "/Courses/courses";
     }
 
+    @PostMapping("/update-status/{coursesId}")
+    private String updateStatus(@PathVariable("coursesId") Integer coursesId,
+                                @RequestParam("status") int status, Model model) {
+
+        Courses courses = coursesService.getById(coursesId);
+        if (courses != null) {
+            CoursesStatus coursesStatus = CoursesStatus.fromCode(status);
+//            System.out.println("Status " + coursesStatus.getStatusMessage());
+            courses.setCoursesStatus(coursesStatus.getCode());
+            coursesService.updateCourses(courses);
+        }
+        return "redirect:/courses";
+    }
+
+    @PostMapping("/update-delete-flag/{coursesId}")
+    private String updateDeletedFlag(@PathVariable("coursesId") Integer coursesId,
+                                     @RequestParam("deletedFlag") Integer deletedFlag, Model model) {
+        Courses courses = coursesService.getById(coursesId);
+        if(courses != null){
+            coursesService.updateDeletedFlag(coursesId,deletedFlag);
+        }
+        return "redirect:/courses";
+    }
+
     @GetMapping("/view-create")
-    public String addCourses(Model model) {
+    public String viewAddCourses(Model model) {
         model.addAttribute("courses", new Courses());
         model.addAttribute("listTeacher", teacherService.getAllTeacher());
         model.addAttribute("listCategories", categoriesService.getAllCategories());
@@ -65,17 +98,59 @@ public class CoursesController {
         return "/Courses/createCourses";
     }
 
+    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "/uploads/";
+
     @PostMapping("/add")
     public String addCourses(@Valid @ModelAttribute("courses") Courses courses,
                              BindingResult result,
                              @RequestParam("program-cost") String programCost,
+                             @RequestParam("file") MultipartFile file,
+                             @RequestParam("fileVd") MultipartFile fileVd,
                              Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("listTeacher", teacherService.getAllTeacher());
-            model.addAttribute("listCategories", categoriesService.getAllCategories());
-            model.addAttribute("listCoursesClassify", coursesClassifyService.getAllCoursesClassify());
-            return "/Courses/createCourses";
+        String imagePath = null;
+        String videoPath = null;
+
+        if (!file.isEmpty()) {
+            try {
+                String orgName = file.getOriginalFilename();
+                String name = orgName.substring(orgName.lastIndexOf("\\") + 1);
+                Path uploadDir = Paths.get("src/main/resources/static/uploads");
+                if (!Files.exists(uploadDir)) {
+                    Files.createDirectories(uploadDir);
+                }
+                imagePath = "/uploads/" + name;
+                Path filePath = uploadDir.resolve(name);
+                file.transferTo(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        if (!fileVd.isEmpty()) {
+            try {
+                String orgNameVd = fileVd.getOriginalFilename();
+                String nameVd = orgNameVd.substring(orgNameVd.lastIndexOf("\\") + 1);
+                Path uploadDirVd = Paths.get("src/main/resources/static/uploads/videos");
+                if (!Files.exists(uploadDirVd)) {
+                    Files.createDirectories(uploadDirVd);
+                }
+                videoPath = "/uploads/videos/" + nameVd;
+                Path filePathVd = uploadDirVd.resolve(nameVd);
+                fileVd.transferTo(filePathVd);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        courses.setCoursesImage(imagePath);
+        courses.setCoursesVideo(videoPath);
+//
+//        if (result.hasErrors()) {
+//            model.addAttribute("listTeacher", teacherService.getAllTeacher());
+//            model.addAttribute("listCategories", categoriesService.getAllCategories());
+//            model.addAttribute("listCoursesClassify", coursesClassifyService.getAllCoursesClassify());
+//            return "/Courses/createCourses";
+//        }
 
         if ("free".equals(programCost)) {
             courses.setEfectiveDurationMoney(BigDecimal.ZERO); // Set to 0 for free program
@@ -85,15 +160,19 @@ public class CoursesController {
         return "redirect:/courses";
     }
 
+
     @GetMapping("/detail/{coursesId}")
-    private String detail(@PathVariable("coursesId") Integer coursesId, Model model)
-    {
+    private String detail(@PathVariable("coursesId") Integer coursesId,
+                          Model model) {
         Courses courses = coursesService.getById(coursesId);
-        model.addAttribute("courses", courses);
+        model.addAttribute("chapter", new Chapters());
+        model.addAttribute("listChapter", chapterService.findByCoursesId(coursesId));
         model.addAttribute("listTeacher", teacherService.getAllTeacher());
         model.addAttribute("listCategories", categoriesService.getAllCategories());
         model.addAttribute("listCoursesClassify", coursesClassifyService.getAllCoursesClassify());
-        return "Courses/detailCourses";
+
+        // Chuyển hướng sang controller khác với coursesId
+        return "redirect:/courses/detail/" + coursesId + "/chapter";
     }
 
     @GetMapping("/search")
@@ -114,4 +193,22 @@ public class CoursesController {
         }
         return "/Courses/courses";
     }
+
+    @GetMapping("/filter")
+    public String filterCourses(@RequestParam("type") int type, Model model) {
+        List<Courses> coursesList = coursesService.findCoursesByType(type);
+        model.addAttribute("listCourses", coursesList);
+        model.addAttribute("totalElement", coursesList.size());
+        model.addAttribute("emptyData", coursesList.isEmpty() ? "Không có dữ liệu" : null);
+        return "/Courses/courses";
+    }
+
+    @GetMapping("/delete/{coursesId}")
+    private String delete(@PathVariable("coursesId") Integer coursesId) {
+        Courses courses = coursesService.getById(coursesId);
+        coursesService.deleteCourses(courses);
+        return "redirect:/courses";
+    }
+
+
 }
