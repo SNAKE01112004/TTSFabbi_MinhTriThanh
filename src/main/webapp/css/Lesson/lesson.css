@@ -1,0 +1,480 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: 0px;
+    outline: 0;
+    appearance: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+/* Sidebar */
+aside {
+    width: 295px;
+    height: 100vh;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.top-list-logo {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.top-list-logo img {
+    padding: 9px 0px;
+    max-width: 100%;
+    height: auto;
+}
+
+.top-list-logo span {
+    width: 90%;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.sidebar {
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.sidebar ul li {
+    position: relative;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: 15px;
+    border-radius: .4rem;
+    color: #000000;
+    /* Default text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.sidebar ul li a span {
+    color: #000000;
+}
+
+.sidebar ul li a .title {
+    font-size: 1rem;
+}
+
+.sidebar ul li a:focus,
+.sidebar ul li a:focus span,
+.sidebar ul li a:focus .title {
+    background-color: rgb(254, 119, 27);
+    color: #ffffff;
+}
+
+.dropdown-content {
+    display: none;
+    width: 100%;
+    background-color: #b4b4b4;
+    z-index: 1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a:focus {
+    background-color: rgb(254, 119, 27);
+    color: #ffffff;
+}
+
+/* Main content */
+.main-content {
+    flex-grow: 1;
+    margin-left: 1.2rem;
+    padding: 1.2rem;
+}
+
+.main-top {
+    width: 100%;
+    padding: 1.6rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: .4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-navigation {
+    margin-top: .7rem;
+}
+
+.main-information {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.main-information-line {
+    width: 1px;
+    /* Độ dày của đường thẳng */
+    height: 40px;
+    /* Chiều cao của đường thẳng */
+    background-color: #e0e0e0;
+    /* Màu sắc của đường thẳng */
+    margin: 0 15px;
+    /* Khoảng cách bên trái và bên phải */
+}
+
+.main-information-account {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.account-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.account-role {
+    font-size: 0.9em;
+    color: #777;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.main-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly */
+    align-items: center; /* Aligns items vertically in the center */
+    gap: 50px;
+    margin-bottom: 20px; /* Space between tabs and buttons */
+}
+
+.tab {
+    font-size: 18px;
+    font-weight: bold;
+    color: #41416e;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+.active {
+    color: #f97316;
+    border-bottom: 2px solid #f97316;
+}
+
+.instruction {
+    font-size: 14px;
+    color: #e30c0c;
+    margin-left: auto; /* Pushes instruction text to the end of the line */
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
+    text-align: right;
+}
+
+.button-container-main {
+    display: flex;;
+    justify-content: space-between; /* Aligns buttons to the left */
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-create {
+    background-color: #0070ff;
+    color: white;
+    font-size: 16px;
+    width: 180px; /* Set to original width */
+    height: 38px; /* Set to original height */
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-create:hover {
+    background-color: #005bb5;
+}
+
+
+.btn-create i {
+    padding-right: 8px;
+}
+
+.btn-create:hover {
+    background-color: #005bb5;
+}
+
+.btn-preview {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-preview:hover {
+    background-color: #f3f3f3;
+}
+
+.btn-preview i {
+    margin-right: 5px;
+    color: #41416e;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        align-items: flex-start;
+    }
+
+    .tabs {
+        flex-wrap: wrap; /* Allows items to wrap onto the next line if needed */
+        margin-bottom: 20px;
+    }
+
+    .instruction {
+        margin-top: 10px; /* Add space when wrapped to a new line */
+    }
+
+    button-container-main {
+        flex-direction: row; /* Keeps buttons in a row */
+        align-items: flex-start;
+    }
+}
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    z-index: 999; /* Ensure it sits on top */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 545px;
+    position: relative;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal .form-group {
+    margin-bottom: 15px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal .input-field {
+    width: 100%;
+    height: 44px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-container button {
+    width: 30%;
+    height: 50px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #005bb5;
+}
+
+.upload-section {
+    border: 2px dashed #0070ff;
+    padding: 15px;
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-section:hover {
+    background-color: #f0f8ff;
+}
+
+.cancel-confirm {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.cancel-confirm button {
+    margin-left: 15px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #0070ff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cancel-confirm button:hover {
+    color: #005bb5;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.file-input {
+    display: none;
+}
+
+.lecture-container {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.lecture-box {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.lecture-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.lecture-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.lecture-info p:first-child:after {
+    content: "|";
+    margin: 0 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons a {
+    color: #0070ff;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.action-buttons a.edit {
+    color: #fe771b;
+}
+
+.action-buttons a.delete {
+    color: #f04438;
+}
+
+.action-buttons a:hover {
+    opacity: 0.8;
+}
+
+.lecture-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    padding-top: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.lecture-details div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.lecture-details div:not(:last-child)::after {
+    content: "|";
+    margin: 0 10px;
+}

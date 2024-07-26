@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Courses/detailCourses.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Lesson/createExercises.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/user">
+                        <a href="/view-user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,9 +37,9 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/categories"><span>Danh sách nhóm chương
+                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
@@ -98,7 +98,7 @@
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Chi tiết chương trình</h1>
+                <h1>Tạo bài tập chương</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
                     <span>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span><a href="/courses">Danh sách chương trình</a></span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,23 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>${coursesName}</span>
+                    <span>hỏi chấm</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>chấm hỏi</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>nhìn con cu</span>
                 </div>
             </div>
 
@@ -139,182 +155,78 @@
         </div>
 
         <div class="main-container">
-            <a href="/courses" class="back-button">Quay lại</a>
-            <div class="container">
-                <div class="info-section">
-                    <div class="info-header">
-                        Thông tin chương trình
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <span class="info-title">Tên chương trình</span>
-                            <span class="info-content" id="coursesName">${courses.coursesName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Phân loại chương trình</span>
-                            <span class="info-content" id="coursesClassifyId">${courses.coursesClassifyId.coursesClassifyName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Loại chương trình</span>
-                            <span class="info-content" id="coursesType">${courses.coursesType == 1 ? 'Vip' : 'Thường'}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Nhóm chương trình</span>
-                            <span class="info-content" id="categoriesId">${courses.categoriesId.categoriesName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chuyên gia hiển thị ở tổng quan</span>
-                            <span class="info-content" id="teacherId">${courses.teacherId.teacherName}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chuyên gia phụ trách chấm bài</span>
-                            <span class="info-content">Không</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Chi phí chương trình</span>
-                            <span class="info-content" id="efectiveDurationMoney">${courses.efectiveDurationMoney}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Lộ trình học</span>
-                            <span class="info-content" id="coursesRoute">${courses.coursesRoute == true ? 'Tuần tự' : 'Không tuần tự'}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượng buổi học</span>
-                            <span class="info-content">4</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Giới hạn thời gian đăng ký</span>
-                            <span class="info-content">-</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Thời gian tự động kích hoạt</span>
-                            <span class="info-content">${courses.coursesActive}</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Giới hạn số lượng đăng ký</span>
-                            <span class="info-content">-</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượt mua hiển thị</span>
-                            <span class="info-content">1.000</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượt mua thực tế</span>
-                            <span class="info-content">0</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-title">Số lượng học viên</span>
-                            <span class="info-content">2</span>
-                        </div>
-                    </div>
-                    <div class="info-section">
-                        <hr class="section-divider">
-                        <div class="info-grid full-width">
-                            <div class="info-item">
-                                <span class="info-title" >Mô tả chương trình</span>
-                                <span class="info-content" id="coursesDescription">${courses.coursesDescription}</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-title">Đối tượng khách hàng</span>
-                                <span class="info-content" id="coursesCustomerDescription">${courses.coursesCustomerDescription}</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-title">Lợi ích khi mua chương trình</span>
-                                <span class="info-content" id="benifitBuyCourses">${courses.benifitBuyCourses}</span>
-                            </div>
-                        </div>
-                    </div>
+            <form>
+                <div class="form-group">
+                    <label for="exercise-title">Tiêu đề bài tập <span style="color: red;">*</span></label>
+                    <input type="text" id="exercise-title" class="input-field" placeholder="Tên bài tập" required>
                 </div>
-            </div>
-        </div>
-        <!-- danh sách chương trình -->
-        <div class="container-footer">
-            <h2>Danh sách chương trong chương trình <span class="status-label">Đã xuất bản</span></h2>
-            <div class="tab-container">
-                <ul class="tab-list">
-                    <li class="tab-item active">Danh sách chương</li>
-                    <li class="tab-item">Danh sách học viên (6)</li>
-                    <li class="tab-item">Đơn hàng (0)</li>
-                </ul>
-                <div class="search-container">
-                    <input type="text" class="search-box" placeholder="Tìm kiếm theo chương học...">
-                    <button class="action-button">Tạo mới chương trình</button>
+
+                <div class="form-group">
+                    <label for="completion-time">Thời gian hoàn thành bài tập <span
+                            style="color: red;">*</span></label>
+                    <input type="number" id="completion-time" class="input-field"
+                           placeholder="Nhập thời gian giới hạn" required>
                 </div>
-            </div>
-            <table class="data-table">
-                <thead>
-                <tr>
-                    <th>Số thứ tự chương</th>
-                    <th>Tiêu đề chương</th>
-                    <th>Số lượng bài giảng</th>
-                    <th>Số lượng bài tập</th>
-                    <th>Tổng thời gian học</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listChapter}" var="chapter" varStatus="i">
-                    <tr>
-                        <td><a href="/courses/detail/${chapter.courses.coursesId}/chapter/${chapter.chapterId}">Chương học ${i.index+1}</a></td>
-                        <td>${chapter.chapterName}</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
 
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </main>
+                <div class="form-group">
+                    <label for="expert">Chuyên gia đánh giá bài tập <span style="color: red;">*</span></label>
+                    <select id="expert" class="input-field" required>
+                        <option value="">Chọn chuyên gia</option>
+                        <option value="expert1">Chuyên gia 1</option>
+                        <option value="expert2">Chuyên gia 2</option>
+                        <!-- Thêm các tùy chọn khác nếu cần -->
+                    </select>
+                </div>
 
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Tạo chương học mới</h2>
-            <form action="/courses/detail/${coursesId}/chapter/add" method="post">
-                <input type="text" name="chapterName" class="modal-input" placeholder="Tiêu đề chương học">
-                <div>
-                    <button class="btn cancel">Hủy</button>
-                    <button class="btn create" type="submit">Tạo</button>
+                <div class="form-group">
+                    <label for="evaluation-time">Thời gian đánh giá bài tập <span
+                            style="color: red;">*</span></label>
+                    <input type="number" id="evaluation-time" class="input-field"
+                           placeholder="Nhập số ngày để hoàn thành đánh giá" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tạo câu hỏi mới <span style="color: red;">*</span></label>
+                    <div class="question-btn-container">
+                        <button type="button" class="question-btn"><i class="fas fa-book"></i> Câu hỏi tự
+                            luận</button>
+                        <button type="button" class="question-btn"><i class="fas fa-list"></i> Câu hỏi trắc
+                            nghiệm</button>
+                        <button type="button" class="question-btn" id="videoQuestionButton"><i
+                                class="fas fa-video"></i> Câu hỏi video</button>
+                    </div>
+                    <!-- Input ẩn để chọn video -->
+                    <input type="file" id="videoInput" class="file-input" accept="video/*">
+                    <div id="fileNameDisplay" class="file-name"></div>
+                </div>
+
+                <div class="btn-container">
+                    <a href="/lessons/view_exercises" type="button" class="btn btn-cancel"><i class="fas fa-times-circle"></i> Quay
+                        lại</a>
+                    <button type="submit" class="btn btn-create"><i class="fas fa-check-circle"></i> Tạo</button>
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 </div>
 <script>
-    // Get elements
-    const actionButton = document.querySelector('.action-button');
-    const modal = document.querySelector('.modal');
-    const closeModal = document.querySelector('.close');
-    const formContainer = document.querySelector('.form-container');
-    const cancelButton = document.querySelector('.btn.cancel');
 
-    // Show modal and blur background
-    actionButton.addEventListener('click', function() {
-        modal.style.display = 'flex';
-        formContainer.classList.add('blurred');
+    // Lấy các phần tử nút video và input file
+    const videoQuestionButton = document.getElementById('videoQuestionButton');
+    const videoInput = document.getElementById('videoInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+    // Mở hộp thoại chọn file khi nhấn nút
+    videoQuestionButton.addEventListener('click', () => {
+        videoInput.click(); // Kích hoạt sự kiện click trên input file
     });
 
-    // Close modal and unblur background
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-        formContainer.classList.remove('blurred');
-    });
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            formContainer.classList.remove('blurred');
+    // Hiển thị tên file sau khi chọn
+    videoInput.addEventListener('change', () => {
+        if (videoInput.files.length > 0) {
+            const fileName = videoInput.files[0].name;
+            fileNameDisplay.textContent = `Đã chọn: ${fileName}`;
         }
-    });
-
-    // Close modal when clicking the cancel button
-    cancelButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        formContainer.classList.remove('blurred');
     });
 
     document.addEventListener('DOMContentLoaded', function () {

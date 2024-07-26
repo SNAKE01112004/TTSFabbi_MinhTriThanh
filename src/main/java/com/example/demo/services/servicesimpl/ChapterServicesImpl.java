@@ -19,6 +19,11 @@ public class ChapterServicesImpl implements ChapterService {
     }
 
     @Override
+    public List<Chapters> findByCoursesId(Integer id) {
+        return chaptersRepository.findByCoursesId(id);
+    }
+
+    @Override
     public List<Chapters> searchByUserName(String keyword) {
         return chaptersRepository.findByChapterName(keyword);
     }

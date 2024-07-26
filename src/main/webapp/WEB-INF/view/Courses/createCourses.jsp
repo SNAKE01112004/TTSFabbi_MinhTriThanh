@@ -139,7 +139,7 @@
         </div>
 
         <div class="main-container">
-            <form:form action="/courses/add" method="post" modelAttribute="courses">
+            <form:form action="/courses/add" method="post" modelAttribute="courses" enctype="multipart/form-data">
                 <div class="form-container">
                     <div class="form-column">
                         <div class="form-group">
@@ -151,14 +151,12 @@
 
                         <div class="form-group-radio">
                             <label>Chi phí chương trình theo gói (Chọn 1 gói để hiển thị) *</label>
-                            <div class="radio-group" style="display: flex; align-items: center;">
-                                <label style="margin-right: 15px;">
-                                    <input type="radio" name="program-cost" value="paid" checked onchange="toggleCostInput()"> Chương trình tính phí
-                                </label>
-                                <label style="margin-right: 15px;">
-                                    <input type="radio" name="program-cost" value="free" onchange="toggleCostInput()"> Chương trình miễn phí
-                                </label>
-                            </div>
+                            <label style="margin-right: 15px;">
+                                <input type="radio" name="program-cost" value="paid" checked onchange="toggleCostInput()"/> Chương trình tính phí
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="radio" name="program-cost" value="free" onchange="toggleCostInput()"/> Chương trình miễn phí
+                            </label>
                             <div class="select-group" style="margin-top: 10px;" id="costOptions">
                                 <form:input path="efectiveDurationMoney" placeholder="VND" id="costInput"/>
                             </div>
@@ -181,11 +179,11 @@
                     <div class="form-column">
                         <div class="form-group">
                             <label for="program-type">Loại chương trình *</label>
-                            <form:select id="program-type" path="coursesType">
+                            <select id="program-type" name="coursesType">
                                 <option value="">Vip / Thường</option>
-                                <option value="true">Vip</option>
-                                <option value="false">Thường</option>
-                            </form:select>
+                                <option value="1"/>Vip
+                                <option value="0"/>Thường
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="expert">Chuyên gia hiển thị ở tổng quan *</label>
@@ -233,7 +231,7 @@
                                     <div class="upload-button-container">
                                         <label for="fileUpload" class="upload-button">Tải video lên lên</label>
                                     </div>
-                                    <input type="file" id="fileUpload" style="display: none;" name="file"
+                                    <input type="file" id="fileUpload" style="display: none;" name="fileVd"
                                            onchange="previewImage(event)">
                                 </div>
                             </div>
@@ -269,7 +267,7 @@
             costInput.value = ''; // Clear the input for paid programs to allow user input
             costInput.disabled = false; // Enable the input
         } else {
-            costInput.value = '0'; // Set the input value to 0 for free programs
+            costInput.value = 'free'; // Set the input value to 0 for free programs
             costInput.disabled = true; // Disable the input
         }
 

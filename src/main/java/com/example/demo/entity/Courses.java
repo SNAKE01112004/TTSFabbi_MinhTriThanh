@@ -1,10 +1,8 @@
 package com.example.demo.entity;
 
+import com.example.demo.exception.CoursesStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,6 +10,8 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 @Entity
 @Table(name = "courses")
 public class Courses extends BaseEntity {
@@ -33,7 +33,7 @@ public class Courses extends BaseEntity {
     private String benifitBuyCourses;
 
     @Column(name = "courses_type")
-    private Boolean coursesType;
+    private Integer coursesType;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
@@ -58,7 +58,15 @@ public class Courses extends BaseEntity {
     @JoinColumn(name = "courses_classify_id")
     private CoursesClassify coursesClassifyId;
 
+    @Column(name = "courses_status")
+    private int coursesStatus;
+
     @ManyToOne
     @JoinColumn(name = "categories_id")
     private Categories categoriesId;
+
+    public String updateCoursesStatusDisplay() {
+        return CoursesStatus.fromCode(this.coursesStatus).getStatusMessage();
+    }
+
 }

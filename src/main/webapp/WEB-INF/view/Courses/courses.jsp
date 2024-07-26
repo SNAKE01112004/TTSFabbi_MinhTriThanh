@@ -140,9 +140,9 @@
             <h3>Quản lý danh sách chương trình</h3>
             <div class="controls">
                 <div class="filters">
-                    <a href="#" class="filter-link active">Tất cả</a>
-                    <a href="#" class="filter-link">Chương trình thường</a>
-                    <a href="#" class="filter-link">Chương trình VIP</a>
+                    <a href="/courses" class="filter-link active">Tất cả</a>
+                    <a href="/courses/filter?type=0" class="filter-link">Chương trình thường</a>
+                    <a href="/courses/filter?type=1" class="filter-link">Chương trình VIP</a>
                     <a href="#" class="filter-link">Chương trình phiếu</a>
                 </div>
                 <div class="search-and-create">
@@ -178,15 +178,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <td>
-                    <c:if test="${empty listCourses}">
-                        <p>${emptyData}</p>
-                    </c:if>
-                </td>
+                <c:if test="${empty listCourses}">
+                    <p>${emptyData}</p>
+                </c:if>
                 <c:forEach items="${listCourses}" var="courses">
                     <tr>
-                        <td><a href="/courses/detail/${courses.coursesId}" class="courses.coursesId">${courses.coursesName}</a></td>
-                        <td><span class="status published">Đã xuất bản</span></td>
+                        <input type="hidden" name="id" value="${courses.coursesId}">
+                        <td><a href="/courses/detail/${courses.coursesId}"
+                               class="courses.coursesId">${courses.coursesName}</a></td>
+                        <td><span class="status published">${courses.updateCoursesStatusDisplay()}</span></td>
                         <td>${courses.teacherId.teacherName}</td>
                         <td>${courses.efectiveDurationMoney}</td>
                         <td>${courses.categoriesId.categoriesName}</td>
@@ -196,9 +196,23 @@
                             <div class="dropdown">
                                 <button class="dropbtn">Actions <i class="fa-solid fa-caret-down"></i></button>
                                 <div class="dropdown-content">
-                                    <button onclick="selectOption(this, 'Nháp')">Nháp</button>
-                                    <button onclick="selectOption(this, 'Xuất bản')">Xuất bản</button>
-                                    <button onclick="selectOption(this, 'Vô hiệu hoá')">Vô hiệu hoá</button>
+                                    <form action="/courses/update-status/${courses.coursesId}" method="post">
+                                        <input type="hidden" name="status" value="1"/>
+                                        <button onclick="selectOption(this,'Nháp')" type="submit">Nháp</button>
+                                    </form>
+                                    <form action="/courses/update-status/${courses.coursesId}" method="post">
+                                        <input type="hidden" name="status" value="2"/>
+                                        <button onclick="selectOption(this,'Xuất bản')" type="submit">Xuất bản</button>
+                                    </form>
+                                    <form action="/courses/update-status/${courses.coursesId}" method="post">
+                                        <input type="hidden" name="status" value="0"/>
+                                        <button onclick="selectOption(this,'Vô hiệu hoá')" type="submit">Vô hiệu hoá
+                                        </button>
+                                    </form>
+                                    <form action="/courses/update-delete-flag/${courses.coursesId}" method="post">
+                                        <input type="hidden" name="deletedFlag" value="1"/>
+                                        <button type="submit" class="delete">Xoá</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
@@ -246,6 +260,7 @@
     function selectOption(button, option) {
         var dropdownButton = button.closest('.dropdown').querySelector('.dropbtn');
         dropdownButton.innerHTML = option + ' <i class="fa-solid fa-caret-down"></i>';
+
     }
 
     function showModal() {
