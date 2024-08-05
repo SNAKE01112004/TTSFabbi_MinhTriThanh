@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: 0px;
+    outline: 0;
+    appearance: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 17rem auto;
+}
+
+/* sidebar bên trái*/
+/* logo */
+aside {
+    height: 100vh;
+    width: 295px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.top-list-logo {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.top-list-logo img {
+    padding: 9px 0px;
+    max-width: 100%;
+    height: auto;
+}
+
+.top-list-logo span {
+    width: 90%;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+/* CSS chung cho sidebar */
+.sidebar {
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.sidebar ul li {
+    position: relative;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem;
+    border-radius: .4rem;
+    padding: 15px;
+    color: #000000; /* Màu chữ mặc định */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.sidebar ul li a span {
+    color: #000000;
+}
+
+.sidebar ul li a .title {
+    font-size: 1rem;
+}
+
+.sidebar ul li a:focus,
+.sidebar ul li a:focus span,
+.sidebar ul li a:focus .title {
+    background-color: rgb(254, 119, 27);
+    color: #ffffff;
+}
+
+/* dropdown */
+.dropdown-content {
+    display: none;
+    width: 100%;
+    background-color: #b4b4b4;
+    z-index: 1;
+}
+
+/* Khi dropdown có lớp 'show', nó sẽ hiển thị */
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a:focus {
+    background-color: rgb(254, 119, 27);
+    color: #ffffff;
+}
+
+/* main */
+/* main-content */
+.main-content {
+    width: 100%;
+    margin-left: 1.2rem;
+    padding: 1.2rem;
+}
+
+/* main-top */
+.main-top {
+    width: 100%;
+    padding: 1.6rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: .4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-navigation {
+    margin-top: .7rem;
+}
+
+.main-information {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    height: 100%;
+}
+
+.main-information-line {
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.main-information-account img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+}
+
+/* main-second-top */
+.main-second-top {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.program-title {
+    font-size: 16px;
+    color: #ff8c00; /* Orange color for "Chương trình" */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.main-title-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.main-header-left {
+    line-height: 1.5;
+}
+
+.main-header-right {
+    display: flex;
+    align-items: center; /* Align items horizontally */
+    color: #555;
+}
+
+.main-header-right p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.main-header-right p + p {
+    margin-top: 5px; /* Adds a little space between time and student name */
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #666;
+    margin-left: 10px; /* Adjusting margin for spacing */
+}
+
+.question-section {
+    padding: 20px;
+    background-color: #fffbf5;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.question-alert {
+    color: #f39c12;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.question-content {
+    padding: 15px;
+    background-color: #f9fef9;
+    border-radius: 5px;
+}
+
+.answers {
+    margin-top: 15px;
+}
+
+.answers label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+
+.answers input[type="radio"] {
+    margin-right: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.action-buttons .back-button {
+    background-color: transparent;
+    border: 2px solid #d92d20;
+    color: #d92d20;
+}
+
+.action-buttons .back-button:hover {
+    background-color: #d92d20;
+    color: white;
+}
+
+.action-buttons .draft-button {
+    background-color: #f39c12;
+    color: white;
+}
+
+.action-buttons .draft-button:hover {
+    background-color: #e08e0b;
+}
+
+.action-buttons .complete-button {
+    background-color: #039855;
+    color: white;
+}
+
+.action-buttons .complete-button:hover {
+    background-color: #027b48;
+}

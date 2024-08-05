@@ -26,7 +26,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -38,20 +38,20 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
+                            <li><a href=""><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -101,7 +101,7 @@
             <div class="main-title">
                 <h1>Chi tiết chương trình</h1>
                 <div class="main-navigation">
-                    <span>Trang chủ</span>
+                    <span><a href="/user">Trang chủ</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +109,7 @@
                                       fill="#000000"/>
                             </svg>
                         </span>
-                    <span>Danh sách chương trình</span>
+                    <span><a href="/courses">Danh sách chương trình</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -151,7 +151,7 @@
             <!-- Tabs for Navigation -->
             <div class="tabs">
                 <div class="tab active">Danh sách bài giảng</div>
-                <div class="tab"><a href="/lessons/view_exercises">Danh sách bài tập chương</a></div>
+                <div class="tab"><a href="/courses/detail/${chapter.courses.coursesId}/chapter/${chapter.chapterId}/exercises">Danh sách bài tập chương</a></div>
 
                 <!-- Drag and Drop Instruction -->
                 <div class="instruction">Kéo thả để điều chỉnh vị trí bài giảng, bài tập chương</div>
@@ -175,7 +175,7 @@
                             <p>Bài giảng ${i.index+1}</p>
                             <p>Thời lượng: ${lesson.lessonSize}</p>
                             <div class="action-buttons">
-                                <a href="#">Tạo bài tập</a>
+                                <a href="/courses/detail/${coursesId}/chapter/${chapterId}/exercises/create-excercise">Tạo bài tập</a>
                                 <a href="#" class="edit">Chỉnh sửa</a>
                                 <a href="#" class="delete">Xoá</a>
                             </div>

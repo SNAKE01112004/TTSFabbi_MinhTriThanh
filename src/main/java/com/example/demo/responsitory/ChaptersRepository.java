@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ChaptersRepository extends JpaRepository<Chapters, Integer> {
@@ -15,5 +16,4 @@ public interface ChaptersRepository extends JpaRepository<Chapters, Integer> {
 
     @Query("SELECT c FROM Chapters c WHERE c.courses.coursesId = :coursesId")
     List<Chapters> findByCoursesId(@Param("coursesId") Integer coursesId);
-
 }

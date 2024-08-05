@@ -12,4 +12,9 @@ import java.util.List;
 public interface LessonsRepository extends JpaRepository<Lessons, Integer> {
     @Query("SELECT l FROM Lessons l where l.chapter.chapterId = :chapterId")
     List<Lessons> findLessonsByChapterId(@Param("chapterId") Integer chapterId);
+
+    @Query("SELECT count(l) FROM Lessons l where l.chapter.chapterId = :chapterId")
+    int getCountLessonsByChapterId(@Param("chapterId") Integer chapterId);
+
+
 }

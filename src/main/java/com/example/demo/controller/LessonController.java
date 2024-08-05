@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/courses/detail")
+@RequestMapping("/courses/detail/{coursesId}/chapter/{chapterId}")
 public class LessonController {
     @Autowired
     LessonsService lessonsService;
@@ -29,7 +29,7 @@ public class LessonController {
     @Autowired
     ChapterService chapterService;
 
-    @GetMapping("/{coursesId}/chapter/{chapterId}")
+    @GetMapping()
     private String view_Home(@PathVariable("coursesId") Integer coursesId,
                              @PathVariable("chapterId") Integer chapterId,
                              Model model) {
@@ -38,19 +38,26 @@ public class LessonController {
         Chapters chapters = chapterService.getById(chapterId);
 
         model.addAttribute("lessons", new Lessons());
+        model.addAttribute("chapter",chapters);
         model.addAttribute("lessonsList", lessonsList);
         model.addAttribute("coursesName", courses.getCoursesName());
         model.addAttribute("chapterName", chapters.getChapterName());
         model.addAttribute("listTeacher", teacherService.getAllTeacher());
 
-        return "/Lessons/lesson"; // Đảm bảo tên view là chính xác
+        return "/Lessons/lesson";
     }
 
-    @PostMapping("/{coursesId}/chapter/{chapterId}/add-lesson")
+    @PostMapping("/add-lesson")
     private String add(@PathVariable("coursesId") Integer coursesId,
                        @PathVariable("chapterId") Integer chapterId,
                        @ModelAttribute("lessons") Lessons lessons) {
+        Courses courses = coursesService.getById(coursesId);
+        Chapters chapters = chapterService.getById(chapterId);
+
+        lessons.setChapter(chapters);
+        lessons.setCourses(courses);
         lessonsService.saveAndUpdate(lessons);
         return "redirect:/courses/detail/" + coursesId + "/chapter/" + chapterId; // Chuyển hướng đúng URL
     }
+
 }

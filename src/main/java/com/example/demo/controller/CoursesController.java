@@ -41,6 +41,7 @@ public class CoursesController {
     @Autowired
     CoursesClassifyService coursesClassifyService;
 
+
     @GetMapping()
     private String view_Home(Model model,
                              @RequestParam("page") Optional<Integer> page,
@@ -155,7 +156,7 @@ public class CoursesController {
         if ("free".equals(programCost)) {
             courses.setEfectiveDurationMoney(BigDecimal.ZERO); // Set to 0 for free program
         }
-
+        courses.setDeletedFlag(0);
         coursesService.addCourses(courses);
         return "redirect:/courses";
     }

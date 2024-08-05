@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,14 +45,14 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -141,7 +142,7 @@
 
         <div class="main-bottom">
             <%-- form thêm ng dùng--%>
-            <form action="/user/add" method="post" enctype="multipart/form-data">
+            <form:form action="/user/add" method="post" modelAttribute="user" enctype="multipart/form-data">
                 <span>Ảnh đại diện</span>
                 <div class="profile-section">
                     <div class="avatar">
@@ -187,7 +188,7 @@
                     <div class="customer-form">
                         <div class="form-group">
                             <label for="fullName">Họ và tên <span class="required">*</span></label>
-                            <input type="text" id="fullName" name="usersName" placeholder="Tên người dùng">
+                            <input path="usersName" type="text" id="fullName" name="usersName" placeholder="Tên người dùng">
                         </div>
                         <div class="form-group">
                             <label for="gender">Giới tính</label>
@@ -246,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
         </div>
         <div>
             <h2>Phân quyền người dùng</h2>
@@ -312,7 +313,7 @@
             <button class="btn cancel">Huỷ</button>
             <button class="btn create" type="submit">Tạo</button>
         </div>
-        </form>
+        </form:form>
     </main>
 </div>
 

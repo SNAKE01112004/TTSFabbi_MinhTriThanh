@@ -44,13 +44,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -100,7 +100,7 @@
             <div class="main-title">
                 <h1>Chi tiết chương trình</h1>
                 <div class="main-navigation">
-                    <span>Trang chủ</span>
+                    <span><a href="/user">Trang chủ</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Danh sách chương trình</span>
+                    <span><a href="/courses">Danh sách chương trình</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>hỏi chấm</span>
+                    <span><a href="/courses/detail/${coursesId}/chapter">${coursesName}</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>chấm hỏi</span>
+                    <span>${chapterName}</span>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@
         <div class="main-container">
             <!-- Tabs for Navigation -->
             <div class="tabs">
-                <div class="tab"><a href="/lessons">Danh sách bài giảng</a></div>
+                <div class="tab"><a href="/courses/detail/${chapter.courses.coursesId}/chapter/${chapter.chapterId}">Danh sách bài giảng</a></div>
                 <div class="tab active">Danh sách bài tập chương</div>
 
                 <!-- Drag and Drop Instruction -->
@@ -160,13 +160,33 @@
             <div class="button-container-main">
                 <button class="btn-create" id="openModal">
                     <i class="fas fa-plus"></i>
-                    <a href="/lessons/view-createExerises">Tạo mới bài tập chương</a>
+                    <a href="/courses/detail/${coursesId}/chapter/${chapterId}/exercises/create-excercise">Tạo mới bài tập chương</a>
                 </button>
                 <button class="btn-preview">
                     <i class="fas fa-eye"></i>
                     Xem trước giao diện học viên
                 </button>
             </div>
+            <%-- End Buttons--%>
+<%--edit đoạn này đi--%>
+            <c:forEach items="${exerciseList}" var="e" varStatus="i">
+                <div class="lecture-container">
+                    <div class="lecture-box">
+                        <div class="lecture-info">
+                            <p>Bài tập chương ${i.index+1}</p>
+                            <div class="action-buttons">
+                                <a href="#" class="edit">Chỉnh sửa</a>
+                                <a href="#" class="delete">Xoá</a>
+                            </div>
+                            </div>
+                        <div class="lecture-details">
+                            <div>${e.exerciseTitle}</div>
+                            <div>Ngày tạo: ${e.createdAt}</div>
+                            <div>Cập nhật lần cuối: ${lesson.updatedAt}</div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </main>
 </div>

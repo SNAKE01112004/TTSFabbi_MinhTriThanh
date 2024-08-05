@@ -44,13 +44,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -100,7 +100,7 @@
             <div class="main-title">
                 <h1>Chi tiết chương trình</h1>
                 <div class="main-navigation">
-                    <span>Trang chủ</span>
+                    <span><a href="/user">Trang chủ</a></span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -258,8 +258,9 @@
                     <tr>
                         <td><a href="/courses/detail/${chapter.courses.coursesId}/chapter/${chapter.chapterId}">Chương học ${i.index+1}</a></td>
                         <td>${chapter.chapterName}</td>
-                        <td>Test</td>
-                        <td>Test</td>
+                        <td>${lessonQuantity[chapter.chapterId]}</td>
+<%--                        <td>Test</td>--%>
+                        <td>${exerciseQuantity[chapter.chapterId]}</td>
                         <td>Test</td>
 
                     </tr>

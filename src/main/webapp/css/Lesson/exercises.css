@@ -397,3 +397,84 @@ body {
 .file-input {
     display: none;
 }
+
+.lecture-container {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.lecture-box {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.lecture-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.lecture-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.lecture-info p:first-child:after {
+    content: "|";
+    margin: 0 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons a {
+    color: #0070ff;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.action-buttons a.edit {
+    color: #fe771b;
+}
+
+.action-buttons a.delete {
+    color: #f04438;
+}
+
+.action-buttons a:hover {
+    opacity: 0.8;
+}
+
+.lecture-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    padding-top: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.lecture-details div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.lecture-details div:not(:last-child)::after {
+    content: "|";
+    margin: 0 10px;
+}

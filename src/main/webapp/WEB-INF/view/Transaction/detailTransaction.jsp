@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Lesson/createExercises.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/detailTransaction.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -37,7 +37,7 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href=""><span>Danh sách nhóm chương
+                            <li><a href="/categories"><span>Danh sách nhóm chương
                                             trình</span></a></li>
                             <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="/transaction">
+                        <a href="#">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -98,42 +98,33 @@
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Tạo bài tập chương</h1>
+                <h1>Chi tiết chương trình</h1>
                 <div class="main-navigation">
-                    <span><a href="/user">Trang chủ</a></span>
+                    <span>Trang chủ</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000"/>
+                                      fill="#000000" />
                             </svg>
                         </span>
-                    <span><a href="/courses">Danh sách chương trình</a></span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000"/>
+                                      fill="#000000" />
                             </svg>
                         </span>
-                    <span><a href="/courses/detail/${coursesId}/chapter">${coursesName}</a></span>
+                    <span>hỏi chấm</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000"/>
+                                      fill="#000000" />
                             </svg>
                         </span>
-                    <span><a
-                            href="/courses/detail/${coursesId}/chapter/${chapterId}/exercises">${chapterName}</a></span>
-                    <span>
-                        <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg">
-                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000"/>
-                        </svg>
-                    </span>
-                    <span>Tạo bài tập chương</span>
+                    <span>chấm hỏi</span>
                 </div>
             </div>
 
@@ -143,7 +134,7 @@
                              xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </span>
                 <div class="main-information-line"></div>
@@ -155,83 +146,162 @@
             </div>
         </div>
 
-        <div class="main-container">
-            <form action="/courses/detail/${coursesId}/chapter/${chapterId}/exercises/add-excercise" method="post">
+        <div class="main-second-top">
+            <!-- Back Button -->
+            <button class="back-button" onclick="goBack()">Quay Lại</button>
+
+            <!-- Transaction Information -->
+            <div class="transaction-info">
+                Thông tin giao dịch <span class="unpaid">Chưa thanh toán</span>
+            </div>
+
+            <!-- QR Code and Button -->
+            <div class="image-container">
+                <div class="image-frame">
+                    <!-- QR Image will be placed here -->
+                </div>
+                <button class="qr-button" onclick="copyQRCode()">Sao chép mã QR</button>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
                 <div class="form-group">
-                    <label for="exercise-title">Tiêu đề bài tập <span style="color: red;">*</span></label>
-                    <input type="text" id="exercise-title" class="input-field" placeholder="Tên bài tập"
-                           name="exerciseTitle">
+                    <label for="student-name">Tên học viên:</label>
+                    <input type="text" id="student-name" name="student-name" value="John Doe" disabled>
                 </div>
-
                 <div class="form-group">
-                    <label for="completion-time">Thời gian hoàn thành bài tập <span
-                            style="color: red;">*</span></label>
-                    <input type="number" id="completion-time" class="input-field"
-                           placeholder="Nhập thời gian giới hạn" name="timeComplete">
+                    <label for="created-date">Ngày tạo:</label>
+                    <input type="text" id="created-date" name="created-date" value="2023-08-02" disabled>
                 </div>
-
                 <div class="form-group">
-                    <label for="expert">Chuyên gia đánh giá bài tập <span style="color: red;">*</span></label>
-                    <select id="expert" class="input-field" name="teacher">
-                        <option selected hidden>Chọn chuyên gia</option>
-                        <c:forEach items="${listTeacher}" var="t">
-                            <option value="${t.teacherId}">${t.teacherName}</option>
-                        </c:forEach>
-                    </select>
-
+                    <label for="order-value">Giá trị đơn hàng:</label>
+                    <input type="text" id="order-value" name="order-value" value="500.00" disabled>
                 </div>
-
                 <div class="form-group">
-                    <label for="evaluation-time">Thời gian đánh giá bài tập <span
-                            style="color: red;">*</span></label>
-                    <input type="number" id="evaluation-time" class="input-field"
-                           placeholder="Nhập số ngày để hoàn thành đánh giá" name="timeReview">
+                    <label for="status">Trạng thái:</label>
+                    <input type="text" id="status" name="status" value="Chưa thanh toán" disabled>
                 </div>
-
                 <div class="form-group">
-                    <label>Tạo câu hỏi mới <span style="color: red;">*</span></label>
-                    <div class="question-btn-container">
-                        <button type="button" class="question-btn"><i class="fas fa-book"></i> Câu hỏi tự luận</button>
-                        <button type="button" class="question-btn"><i class="fas fa-list"></i>
-                            Câu hỏi trắc nghiệm
-                        </button>
-                        <button type="button" class="question-btn" id="videoQuestionButton"><i
-                                class="fas fa-video"></i> Câu hỏi video
-                        </button>
-                    </div>
-                    <!-- Input ẩn để chọn video -->
-                    <input type="file" id="videoInput" class="file-input" accept="video/*">
-                    <div id="fileNameDisplay" class="file-name"></div>
+                    <label for="payment-date">Ngày thanh toán:</label>
+                    <input type="text" id="payment-date" name="payment-date" value="-" disabled>
                 </div>
+                <div class="form-group">
+                    <label for="payment-method">Phương thức thanh toán:</label>
+                    <input type="text" id="payment-method" name="payment-method" value="-" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="onepay-transaction-id">Mã giao dịch Onepay:</label>
+                    <input type="text" id="onepay-transaction-id" name="onepay-transaction-id" value="-" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="transaction-id">Mã giao dịch:</label>
+                    <input type="text" id="transaction-id" name="transaction-id" value="-" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="student-id">Mã học viên:</label>
+                    <input type="text" id="student-id" name="student-id" value="-" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="created-by">Giao dịch do nhân viên tạo:</label>
+                    <input type="text" id="created-by" name="created-by" value="Không" disabled>
+                </div>
+            </div>
 
-                <div class="btn-container">
-                    <a href="/lessons/view_exercises" type="button" class="btn btn-cancel"><i
-                            class="fas fa-times-circle"></i> Quay
-                        lại</a>
-                    <button type="submit" class="btn btn-create"><i class="fas fa-check-circle"></i> Tạo</button>
+            <!-- Separator -->
+            <div class="separator"></div>
+
+            <!-- VAT Information -->
+            <div class="vat-info">
+                <h2>Thông tin hóa đơn VAT</h2>
+                <div class="form-group">
+                    <label for="created-by">Hoá đơn Vat</label>
+                    <input type="text" id="created-by" name="created-by" value="Không" disabled>
                 </div>
-            </form>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="transaction-container">
+                <div class="transaction-title">
+                    Chương trình trong giao dịch
+                </div>
+                <table class="transaction-table">
+                    <thead>
+                    <tr>
+                        <th>Chương trình</th>
+                        <th>Thời gian hiệu lực</th>
+                        <th>Hình thức thanh toán</th>
+                        <th>Giá thành</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>ducpx-2</td>
+                        <td>2 tháng</td>
+                        <td>Trả thẳng</td>
+                        <td>10,000,000</td>
+                    </tr>
+                    <!-- Add more rows here if needed -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 </div>
 <script>
+    function goBack() {
+        window.history.back();
+    }
 
-    // Lấy các phần tử nút video và input file
-    const videoQuestionButton = document.getElementById('videoQuestionButton');
-    const videoInput = document.getElementById('videoInput');
-    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    function copyQRCode() {
+        // Tạo và sao chép mã QR ở đây
+        // Example: QR code URL
+        const qrCode = "https://example.com/qr-code";
+        navigator.clipboard.writeText(qrCode);
+        alert("Mã QR đã được sao chép vào bộ nhớ tạm!");
+    }
 
-    // Mở hộp thoại chọn file khi nhấn nút
-    videoQuestionButton.addEventListener('click', () => {
-        videoInput.click(); // Kích hoạt sự kiện click trên input file
+    // JavaScript to handle modal visibility
+    const openModalButton = document.getElementById('openModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const closeModalBottomButton = document.getElementById('closeModalBottom');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modal = document.getElementById('modal');
+
+    // Function to open the modal
+    openModalButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'flex'; // Show overlay with flex for centering
     });
 
-    // Hiển thị tên file sau khi chọn
-    videoInput.addEventListener('change', () => {
-        if (videoInput.files.length > 0) {
-            const fileName = videoInput.files[0].name;
-            fileNameDisplay.textContent = `Đã chọn: ${fileName}`;
+    // Function to close the modal
+    closeModalButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none'; // Hide overlay
+    });
+
+    // Another way to close the modal
+    closeModalBottomButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none'; // Hide overlay
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.style.display = 'none'; // Hide overlay
         }
+    });
+
+    // File upload functionality
+    const uploadLink = document.getElementById('uploadLink');
+    const fileInput = document.getElementById('fileInput');
+
+    uploadLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        fileInput.click(); // Programmatically click the hidden file input
+    });
+
+    fileInput.addEventListener('change', () => {
+        const fileName = fileInput.files[0].name; // Get the name of the selected file
+        alert(`File selected: ${fileName}`); // Display the file name (optional)
     });
 
     document.addEventListener('DOMContentLoaded', function () {

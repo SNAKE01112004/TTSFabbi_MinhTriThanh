@@ -10,4 +10,5 @@ public interface LessonsService {
     List<Lessons> findLessonsByChapterId(Integer id);
     void saveAndUpdate(Lessons lessons);
     void deleteLesson(Lessons lessons);
+    int getCountLessonsByChapterId(Integer id);
 }

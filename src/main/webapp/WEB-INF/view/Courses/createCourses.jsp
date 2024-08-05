@@ -44,13 +44,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -151,7 +151,7 @@
 
                         <div class="form-group-radio">
                             <label>Chi phí chương trình theo gói (Chọn 1 gói để hiển thị) *</label>
-                            <label style="margin-right: 15px;">
+                            <label style="padding-top: 15px;">
                                 <input type="radio" name="program-cost" value="paid" checked onchange="toggleCostInput()"/> Chương trình tính phí
                             </label>
                             <label style="margin-right: 15px;">

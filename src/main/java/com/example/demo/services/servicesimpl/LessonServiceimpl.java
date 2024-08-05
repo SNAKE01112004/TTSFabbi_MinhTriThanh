@@ -17,7 +17,6 @@ public class LessonServiceimpl implements LessonsService {
     public List<Lessons> findLessonsByChapterId(Integer chapterId) {
         return lessonsRepository.findLessonsByChapterId(chapterId);
     }
-
     @Override
     public void saveAndUpdate(Lessons lessons) {
         lessonsRepository.save(lessons);
@@ -27,4 +26,10 @@ public class LessonServiceimpl implements LessonsService {
     public void deleteLesson(Lessons lessons) {
         lessonsRepository.delete(lessons);
     }
+
+    @Override
+    public int getCountLessonsByChapterId(Integer id) {
+        return lessonsRepository.getCountLessonsByChapterId(id);
+    }
+
 }

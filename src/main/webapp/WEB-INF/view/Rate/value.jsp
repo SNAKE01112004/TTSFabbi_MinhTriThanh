@@ -1,6 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Users/detailUser.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Rate/value.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -29,7 +30,6 @@
                             <span class="title">Học viên</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content dropdown">
                         <a href="#" class="dropdown-toggle">
                             <span class="icon"><i class="fa-solid fa-book"></i></span>
@@ -37,33 +37,29 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/categories"><span>Danh sách nhóm chương trình</span></a></li>
+                            <li><a href="/categories"><span>Danh sách nhóm chươngtrình</span></a></li>
                             <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-solid fa-ticket"></i></span>
                             <span class="title">Quản lý ưu đãi</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content dropdown">
                         <a href="#" class="dropdown-toggle">
                             <span class="icon"><i class="fa-solid fa-circle-question"></i></span>
@@ -75,14 +71,12 @@
                             <li><a href="#"><span>Yêu cầu liên hệ</span></a></li>
                         </ul>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-regular fa-comments"></i></span>
                             <span class="title">Quản lý tin nhắn</span>
                         </a>
                     </li>
-
                     <li class="sidebar-content">
                         <a href="#">
                             <span class="icon"><i class="fa-regular fa-bell"></i></span>
@@ -100,25 +94,19 @@
             </div>
         </div>
     </aside>
-
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Thông tin học viên</h1>
+                <h1>Danh sách chương trình</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
-                    <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                              fill="#000000"/>
-                    </svg>
-                    <span><a style="color: #000" href="/view-user">Danh sách học viên</a></span>
-                    <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                              fill="#000000"/>
-                    </svg>
-                    <span>Thông tin học viên</span>
+                    <span><svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                            Đánh giá bài tập
+                        </span>
                 </div>
             </div>
 
@@ -128,7 +116,7 @@
                              xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003"
-                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </span>
                 <div class="main-information-line"></div>
@@ -139,178 +127,78 @@
             </div>
         </div>
 
-        <div class="main-bottom">
-            <%-- form thêm ng dùng--%>
-            <form action="" method="post" enctype="multipart/form-data">
-                <span>Ảnh đại diện</span>
-                <div class="profile-section">
-                    <div class="avatar">
-                        <c:if test="${not empty users.usersAvatar}">
-                            <img src="${users.usersAvatar}" alt="Avatar" id="avatarImage">
-                        </c:if>
-                    </div>
-                    <div class="upload-input-section">
-                        <input type="text" value="${users.userTarget}" class="input-goal" readonly>
-                    </div>
+        <div class="main-second-top">
+            <!-- Program Title -->
+            <div class="program-title">
+                Chương trình
+            </div>
+
+            <!-- Main Title -->
+            <div class="main-title-name">
+                S0NDQ Chương trình tuần tự + bài tập tuần tự clone 4
+            </div>
+
+            <!-- Header Section -->
+            <div class="main-header">
+                <!-- Left Header -->
+                <div class="main-header-left">
+                    <p><strong>Chương 1:</strong> Chương 2</p>
+                    <p><strong>Bài giảng 1:</strong> Bài giảng 1</p>
                 </div>
 
-                <!-- Phần thông tin cơ bản -->
-                <div class="basic-info">
-                    <h2>Thông tin cơ bản</h2>
-                    <div class="info-row">
-                        <div class="info-item">
-                            <label for="studentId">Mã học viên</label>
-                            <input type="text" id="studentId" value="${users.usersCode}" readonly>
-                        </div>
-                        <div class="info-item">
-                            <label for="customerId">Mã khách hàng Getfly</label>
-                            <input type="text" id="customerId" readonly>
-                        </div>
+                <!-- Right Header -->
+                <div class="main-header-right">
+                    <div>
+                        <p>Thời gian nộp: 25/07/2024 - 09:57</p>
+                        <p>Học viên: Duy</p>
                     </div>
-                    <div class="info-row">
-                        <div class="info-item">
-                            <label for="createdDate">Ngày tạo</label>
-                            <input type="text" id="createdDate" readonly>
-                        </div>
-                        <div class="info-item">
-                            <label for="updatedDate">Ngày cập nhật</label>
-                            <input type="text" id="updatedDate" value="-" readonly>
-                        </div>
-                    </div>
-                </div>
-                <span class="line"></span>
-                <div class="container-information">
-                    <h2>Thông tin khách hàng</h2>
-                    <div class="customer-form">
-                        <div class="form-group">
-                            <label for="fullName">Họ và tên <span class="required">*</span></label>
-                            <input type="text" id="fullName" value="${users.usersName}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="gender">Giới tính</label>
-                            <select id="gender" name="usersGender" disabled>
-                                <option value="">Nam / Nữ</option>
-                                <option value="0" ${users.usersGender == 0? 'selected':''}>Nam</option>
-                                <option value="1"  ${users.usersGender == 1? 'selected':''}>Nữ</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại <span class="required">*</span></label>
-                            <div class="phone-wrapper">
-                                <select id="countryCode">
-                                    <option value="Vietnam">Vietnam</option>
-                                    <option value="Thailan">test</option>
-                                    <!-- Thêm các mã quốc gia khác nếu cần -->
-                                </select>
-                                <input type="tel" id="phone" value="${users.usersPhone}" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" value="${users.usersEmail}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="dob">Ngày sinh</label>
-                            <input type="text" id="dob"
-                                   value="<fmt:formatDate value='${users.usersBirthday}' pattern='dd-MM-yyyy'/>"
-                                   disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Quốc gia</label>
-                            <select id="country" name="usersProvince" disabled>
-                                <option value="">${users.usersProvince}</option>
-                                <!-- Thêm các quốc gia khác nếu cần -->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="district">Quận / Huyện</label>
-                            <input type="text" id="district" value="${users.usersDistrict}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="city">Tỉnh / Thành phố</label>
-                            <input type="text" id="city" value="${users.usersCountryNumber}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Địa chỉ</label>
-                            <input type="text" id="address" value="${users.usersAddress}" disabled>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div>
-            <h2>Phân quyền người dùng</h2>
-            <div class="customer-form">
-                <div class="form-group">
-                    <label for="">NÂNG TẦM<span class="required">*</span></label>
-                    <div class="nangtam">
-                        <input type="datetime" id="" placeholder="Thời gian bắt đầu" disabled>
-                        <input type="datetime" id="" placeholder="Thời gian kết thúc" disabled>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="">COACH VẤN ĐỀ</label>
-                    <div class="nangtam">
-                        <input type="datetime" id="" placeholder="Thời gian bắt đầu" disabled>
-                        <input type="datetime" id="" placeholder="Thời gian kết thúc" disabled>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="">COACH NÂNG TẦM</label>
-                    <div class="nangtam">
-                        <input type="datetime" id="" placeholder="Thời gian bắt đầu" disabled>
-                        <input type="datetime" id="" placeholder="Thời gian kết thúc" disabled>
+                    <div class="profile-icon">
+                        <i class="fas fa-user"></i>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div>
-            <h2>Chăm sóc khách hàng</h2>
-            <div class="customer-form">
-                <div class="form-group">
-                    <label for="">Nhân viên CSKH<span class="required">*</span></label>
-                    <select name="staffCskh" disabled>
-                        <option value="${cskh.staffCskhId == users.staffCskh.staffCskhId}">${users.staffCskh.nameCskh}</option>
-                    </select>
+            <!-- Question Section -->
+            <div class="question-section">
+                <div class="question-title">
+                    <h2>Bài tập 1: Câu hỏi 1</h2>
+                    <span class="question-alert"><i class="fas fa-exclamation-circle"></i> Còn 1 ngày để đánh giá</span>
                 </div>
-                <div class="form-group">
-                    <label for="">NHÂN VIÊN KINH DOANH</label>
-                    <select name="staffId" disabled>
-                        <option value="${nv.staffId == users.staffId.staffId}">${users.staffId.staffName}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">CHUYÊN GIA</label>
-                    <select name="teacherId" disabled>
-                        <option value="${gv.teacherId == users.teacherId.teacherId}">${users.teacherId.teacherName}</option>
-                    </select>
+                <div class="question-content">
+                    <p><strong>Câu 1:</strong> Câu hỏi 1</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="answer" checked> A
+                        </label>
+                        <label>
+                            <input type="radio" name="answer"> B
+                        </label>
+                    </div>
                 </div>
             </div>
 
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="back-button">Quay Lại</button>
+                <button class="draft-button">Lưu Nháp</button>
+                <button class="complete-button">Hoàn Tất Đánh Giá <i class="fas fa-check-circle"></i></button>
+            </div>
         </div>
-        </form>
     </main>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
         dropdownToggles.forEach(function (toggle) {
             toggle.addEventListener('click', function (event) {
-                event.preventDefault(); // Ngăn chặn việc theo liên kết
-
-                // Tìm phần tử cha là .dropdown
+                event.preventDefault();
                 var parent = toggle.closest('.dropdown');
-
-                // Đóng tất cả các dropdown khác
                 var otherDropdowns = document.querySelectorAll('.dropdown-content.show');
                 otherDropdowns.forEach(function (dropdown) {
                     if (dropdown !== parent.querySelector('.dropdown-content')) {
                         dropdown.classList.remove('show');
                     }
                 });
-
                 // Toggle phần tử dropdown hiện tại
                 var dropdownContent = parent.querySelector('.dropdown-content');
                 if (dropdownContent) {
@@ -318,8 +206,6 @@
                 }
             });
         });
-
-        // Đóng dropdown nếu click ra ngoài
         document.addEventListener('click', function (event) {
             var isClickInsideDropdown = event.target.closest('.dropdown');
             if (!isClickInsideDropdown) {
