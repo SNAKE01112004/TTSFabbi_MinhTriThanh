@@ -15,10 +15,11 @@ import java.util.List;
 @Repository
 public interface CoursesReponsitory extends JpaRepository<Courses, Integer> {
      Page<Courses> findAll(Pageable pageable);
+
      @Query("SELECT us from Courses us where us.coursesName like %:keyword%")
      List<Courses> findByCoursesCode(@Param("keyword") String keyword);
 
-     @Query("SELECT c FROM Courses c WHERE c.coursesType = :type")
+     @Query("SELECT c FROM Courses c WHERE c.coursesType = :type and c.deletedFlag = 0")
      List<Courses> findCoursesByType(@Param("type") int type);
 
      @Query(value = "SELECT c from Courses c where c.deletedFlag = 0")
@@ -28,5 +29,4 @@ public interface CoursesReponsitory extends JpaRepository<Courses, Integer> {
      @Transactional
      @Query("update Courses c set c.deletedFlag = :deletedFlag where c.coursesId = :coursesId")
      Integer updateDeletedFlag(@Param("coursesId") Integer coursesId,@Param("deletedFlag") Integer deletedFlag);
-
 }

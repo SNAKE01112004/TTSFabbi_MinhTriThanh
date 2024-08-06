@@ -85,7 +85,7 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/event">
                             <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
                             <span class="title">Sự kiện</span>
                         </a>

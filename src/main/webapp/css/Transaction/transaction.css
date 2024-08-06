@@ -16,16 +16,18 @@ body {
 }
 
 .container {
-    display: flex;
     width: 100%;
     height: 100%;
     margin: auto;
+    display: grid;
+    grid-template-columns: 17rem auto;
 }
 
-/* Sidebar */
+/* sidebar bên trái*/
+/* logo */
 aside {
-    width: 295px;
     height: 100vh;
+    width: 295px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     padding: 1rem;
@@ -51,6 +53,7 @@ aside {
     margin-top: 1rem;
 }
 
+/* CSS chung cho sidebar */
 .sidebar {
     width: 100%;
     margin-top: .5rem;
@@ -66,12 +69,11 @@ aside {
     display: flex;
     align-items: center;
     gap: .7rem;
-    padding: 15px;
+    padding: .5rem;
     border-radius: .4rem;
-    color: #000000;
-    /* Default text color */
-    text-decoration: none;
-    /* Remove underline */
+    padding: 15px;
+    color: #000000; /* Màu chữ mặc định */
+    text-decoration: none; /* Loại bỏ gạch chân */
 }
 
 .sidebar ul li a span {
@@ -89,6 +91,7 @@ aside {
     color: #ffffff;
 }
 
+/* dropdown */
 .dropdown-content {
     display: none;
     width: 100%;
@@ -96,6 +99,7 @@ aside {
     z-index: 1;
 }
 
+/* Khi dropdown có lớp 'show', nó sẽ hiển thị */
 .dropdown-content.show {
     display: block;
 }
@@ -105,13 +109,15 @@ aside {
     color: #ffffff;
 }
 
-/* Main content */
+/* main */
+/* main-content */
 .main-content {
-    flex-grow: 1;
+    width: 100%;
     margin-left: 1.2rem;
     padding: 1.2rem;
 }
 
+/* main-top */
 .main-top {
     width: 100%;
     padding: 1.6rem;
@@ -127,46 +133,21 @@ aside {
 }
 
 .main-information {
-    width: 200px;
     display: flex;
     align-items: center;
-}
-
-.icon {
-    margin-right: 10px;
+    gap: .6rem;
+    height: 100%;
 }
 
 .main-information-line {
-    width: 1px;
-    /* Độ dày của đường thẳng */
-    height: 40px;
-    /* Chiều cao của đường thẳng */
-    background-color: #e0e0e0;
-    /* Màu sắc của đường thẳng */
-    margin: 0 15px;
-    /* Khoảng cách bên trái và bên phải */
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.main-information-account {
-    display: flex;
-    align-items: center;
-}
-
-.avatar {
-    width: 50px;
-    height: 50px;
+.main-information-account img {
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
-    margin-right: 10px;
-}
-
-.account-name {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.account-role {
-    font-size: 0.9em;
-    color: #777;
 }
 
 /* main-second-top */
@@ -180,84 +161,100 @@ aside {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.main-second-top table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-}
-
-.main-second-top th, td {
-    padding: 8px;
+h3 {
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
-.main-second-top  th {
-    background-color: #f2f2f2;
-}
-
-.main-second-top .unpaid {
-    color: orange;
-}
-
-.main-second-top .paid {
-    color: green;
-}
-
-.main-second-top .error {
-    color: red;
-}
-
-.main-second-top .header {
+.controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.main-second-top .search-input {
-    padding: 8px;
+.filters {
+    display: flex;
+}
+
+.filter-link {
+    padding: 10px 10px;
+    margin: 0 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.filter-link.active {
+    color: #FE771B;
+}
+
+.search-and-create {
+    display: flex;
+    align-items: center;
+}
+
+.search-and-create input {
+    padding: 10px;
+    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 300px;
 }
 
-.main-second-top .add-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
+.create-button, .filter-button {
+    padding: 10px 20px;
+    margin: 0 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.main-second-top .filter-links {
-    display: flex;
-    margin-bottom: 10px;
+.create-button {
+    background-color: #007bff;
+    color: white;
+}
+.filter-button {
+    background-color: #f0f0f0;
+    color: black;
+}
+.program-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.program-table th, .program-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.program-table th {
+    background-color: #f0f0f0;
+}
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: white;
 }
 
-.main-second-top .filter-links a {
-    margin-right: 10px;
+.status.published {
+    background-color: #28a745;
+}
+
+.status.draft {
+    background-color: #ffc107;
+}
+
+.status.disabled {
+    background-color: #dc3545;
+}
+
+.action-button {
+    color: #007bff;
     text-decoration: none;
-    color: #333;
 }
 
-.main-second-top .filter-links a.active {
-    font-weight: bold;
-}
-
-.main-second-top .filter-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.main-second-top.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.action-button:hover {
+    text-decoration: underline;
 }
 
 /* main-three-top */
@@ -324,12 +321,10 @@ aside {
     box-sizing: border-box;
     position: relative;
 }
-
 h1 {
     font-size: 24px;
     margin-bottom: 30px;
 }
-
 .close-btn {
     position: absolute;
     top: 10px;
@@ -339,7 +334,6 @@ h1 {
     font-size: 20px;
     cursor: pointer;
 }
-
 .button-group {
     display: flex;
     flex-direction: column;

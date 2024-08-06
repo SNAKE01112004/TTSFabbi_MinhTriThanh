@@ -1,6 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/detailTransaction.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/informationTransaction.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/user">
+                        <a href="/view-user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,14 +37,14 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/categories"><span>Danh sách nhóm chương
+                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="/rate">
+                        <a href="#">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Danh sách chương trình</span>
+                    <span>Quản lý giao dịch</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,15 +116,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>hỏi chấm</span>
-                    <span>
-                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000" />
-                            </svg>
-                        </span>
-                    <span>chấm hỏi</span>
+                    <span>Tạo giao dịch mới</span>
                 </div>
             </div>
 
@@ -147,127 +139,44 @@
         </div>
 
         <div class="main-second-top">
-            <!-- Back Button -->
-            <button class="back-button" onclick="goBack()">Quay Lại</button>
-
-            <!-- Transaction Information -->
-            <div class="transaction-info">
-                <c:if test="${not empty payments.paymentStatus}">
-                    Thông tin giao dịch <span class="unpaid">${payments.paymentStatus == 0 ? 'Đã thanh toán'
-                        : payments.paymentStatus == 1 ? 'Chưa thanh toán'
-                        : payments.paymentStatus == 2 ? 'Lỗi hệ thống'
-                        : 'Lỗi Onepay'}</span>
-                </c:if>
-            </div>
-
-            <!-- QR Code and Button -->
-            <div class="image-container">
-                <div class="image-frame">
-                    <!-- QR Image will be placed here -->
-                </div>
-                <button class="qr-button" onclick="copyQRCode()">Sao chép mã QR</button>
-            </div>
-
-            <!-- Form Container -->
             <div class="form-container">
-                <div class="form-group">
-                    <label for="student-name">Tên học viên:</label>
-                    <input type="text" id="student-name" name="student-name" value="${payments.usersId.usersName}" disabled>
+                <div class="progress-bar">
+                    <div class="step active">Nhập thông tin khách hàng</div>
+                    <div class="step">Chọn chương trình cần thanh toán</div>
+                    <div class="step">Xác nhận hành động</div>
+                    <div class="step">Hoàn thành</div>
                 </div>
-                <div class="form-group">
-                    <label for="created-date">Ngày tạo:</label>
-                    <input type="text" id="created-date" name="created-date" value="${payments.createdAt}" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="order-value">Giá trị đơn hàng:</label>
-                    <input type="text" id="order-value" name="order-value" value="${payments.paymentAmount}" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="status">Trạng thái:</label>
-                    <input type="text" id="status" name="status" value="${payments.paymentStatus == 0 ? 'Đã thanh toán'
-                        : payments.paymentStatus == 1 ? 'Chưa thanh toán'
-                        : payments.paymentStatus == 2 ? 'Lỗi hệ thống'
-                        : 'Lỗi Onepay'}" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="payment-date">Ngày thanh toán:</label>
-                    <input type="text" id="payment-date" name="payment-date" value="-" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="payment-method">Phương thức thanh toán:</label>
-                    <input type="text" id="payment-method" name="payment-method" value="-" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="onepay-transaction-id">Mã giao dịch Onepay:</label>
-                    <input type="text" id="onepay-transaction-id" name="onepay-transaction-id" value="-" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="transaction-id">Mã giao dịch:</label>
-                    <input type="text" id="transaction-id" name="transaction-id" value="${payments.transactionId}" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="student-id">Mã học viên:</label>
-                    <input type="text" id="student-id" name="student-id" value="${payments.usersId.usersCode}" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="created-by">Giao dịch do nhân viên tạo:</label>
-                    <input type="text" id="created-by" name="created-by" value="Không" disabled>
-                </div>
-            </div>
-
-            <!-- Separator -->
-            <div class="separator"></div>
-
-            <!-- VAT Information -->
-            <div class="vat-info">
-                <h2>Thông tin hóa đơn VAT</h2>
-                <div class="form-group">
-                    <label for="created-by">Hoá đơn Vat</label>
-                    <input type="text" id="created-by" name="created-by" value="Không" disabled>
-                </div>
-            </div>
-
-            <div class="separator"></div>
-
-            <div class="transaction-container">
-                <div class="transaction-title">
-                    Chương trình trong giao dịch
-                </div>
-                <table class="transaction-table">
-                    <thead>
-                    <tr>
-                        <th>Chương trình</th>
-                        <th>Thời gian hiệu lực</th>
-                        <th>Hình thức thanh toán</th>
-                        <th>Giá thành</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ducpx-2</td>
-                        <td>2 tháng</td>
-                        <td>Trả thẳng</td>
-                        <td>10,000,000</td>
-                    </tr>
-                    <!-- Add more rows here if needed -->
-                    </tbody>
-                </table>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên *</label>
+                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại *</label>
+                            <div class="phone-input">
+                                <select id="country-code">
+                                    <option value="VN">Vietnam</option>
+                                    <!-- More country options can be added here -->
+                                </select>
+                                <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="Nhập email" required>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary"><a href="/transaction">Quay lại</a></button>
+                        <button type="submit" class="btn btn-primary"><a href="/transaction/view_CreateInformation2">Tiếp theo</a></button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
 </div>
 <script>
-    function goBack() {
-        window.history.back();
-    }
-
-    function copyQRCode() {
-        // Tạo và sao chép mã QR ở đây
-        // Example: QR code URL
-        const qrCode = "https://example.com/qr-code";
-        navigator.clipboard.writeText(qrCode);
-        alert("Mã QR đã được sao chép vào bộ nhớ tạm!");
-    }
 
     // JavaScript to handle modal visibility
     const openModalButton = document.getElementById('openModal');

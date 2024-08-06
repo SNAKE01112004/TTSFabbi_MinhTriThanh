@@ -85,7 +85,7 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/event">
                             <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
                             <span class="title">Sự kiện</span>
                         </a>
@@ -154,6 +154,7 @@
                         <th>Thời Gian Đánh Giá</th>
                         <th>Chuyên Gia</th>
                         <th>Xếp Hạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

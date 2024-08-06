@@ -56,7 +56,6 @@ public class CoursesController {
         int begin = currentPage * pageSize + 1;
         int end = Math.min((currentPage + 1) * pageSize, totalElement);
 
-
         model.addAttribute("totalPage", coursesPage.getTotalPages());
         model.addAttribute("begin", begin);
         model.addAttribute("number", currentPage);
@@ -73,7 +72,6 @@ public class CoursesController {
         Courses courses = coursesService.getById(coursesId);
         if (courses != null) {
             CoursesStatus coursesStatus = CoursesStatus.fromCode(status);
-//            System.out.println("Status " + coursesStatus.getStatusMessage());
             courses.setCoursesStatus(coursesStatus.getCode());
             coursesService.updateCourses(courses);
         }
@@ -145,13 +143,6 @@ public class CoursesController {
 
         courses.setCoursesImage(imagePath);
         courses.setCoursesVideo(videoPath);
-//
-//        if (result.hasErrors()) {
-//            model.addAttribute("listTeacher", teacherService.getAllTeacher());
-//            model.addAttribute("listCategories", categoriesService.getAllCategories());
-//            model.addAttribute("listCoursesClassify", coursesClassifyService.getAllCoursesClassify());
-//            return "/Courses/createCourses";
-//        }
 
         if ("free".equals(programCost)) {
             courses.setEfectiveDurationMoney(BigDecimal.ZERO); // Set to 0 for free program
@@ -160,7 +151,6 @@ public class CoursesController {
         coursesService.addCourses(courses);
         return "redirect:/courses";
     }
-
 
     @GetMapping("/detail/{coursesId}")
     private String detail(@PathVariable("coursesId") Integer coursesId,
@@ -172,7 +162,6 @@ public class CoursesController {
         model.addAttribute("listCategories", categoriesService.getAllCategories());
         model.addAttribute("listCoursesClassify", coursesClassifyService.getAllCoursesClassify());
 
-        // Chuyển hướng sang controller khác với coursesId
         return "redirect:/courses/detail/" + coursesId + "/chapter";
     }
 
@@ -210,6 +199,4 @@ public class CoursesController {
         coursesService.deleteCourses(courses);
         return "redirect:/courses";
     }
-
-
 }

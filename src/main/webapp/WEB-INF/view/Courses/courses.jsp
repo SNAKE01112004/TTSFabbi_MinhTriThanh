@@ -93,7 +93,7 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/event">
                             <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
                             <span class="title">Sự kiện</span>
                         </a>
@@ -260,7 +260,6 @@
     function selectOption(button, option) {
         var dropdownButton = button.closest('.dropdown').querySelector('.dropbtn');
         dropdownButton.innerHTML = option + ' <i class="fa-solid fa-caret-down"></i>';
-
     }
 
     function showModal() {

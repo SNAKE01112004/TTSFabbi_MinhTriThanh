@@ -65,5 +65,4 @@ public class CoursesServiceimpl implements CoursesService {
     public List<Courses> findCoursesByType(int type) {
         return coursesReponsitory.findCoursesByType(type);
     }
-
 }
