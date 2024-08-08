@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/informationTransaction.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Campaign/campaign.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,20 +37,20 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
+                            <li><a href="/categori"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Quản lý giao dịch</span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,15 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Tạo giao dịch mới</span>
+                    <span>hỏi chấm</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>chấm hỏi</span>
                 </div>
             </div>
 
@@ -139,44 +147,135 @@
         </div>
 
         <div class="main-second-top">
-            <div class="form-container">
-                <div class="progress-bar">
-                    <div class="step active">Nhập thông tin khách hàng</div>
-                    <div class="step">Chọn chương trình cần thanh toán</div>
-                    <div class="step">Xác nhận hành động</div>
-                    <div class="step">Hoàn thành</div>
+            <div class="promotion-feature-container">
+                <!-- Product Discount Feature -->
+                <div class="promotion-card product-discount">
+                    <div class="promotion-icon-container">
+                        <img src="discount-icon.png" alt="Discount Icon" class="promotion-icon">
+                    </div>
+                    <div class="promotion-content">
+                        <h3 class="promotion-title">Giảm giá sản phẩm</h3>
+                        <p class="promotion-description">Thiết lập giảm giá hàng ngày cho sản phẩm để tạo sức hút hơn so với giá gốc, từ đó kích thích mua hàng.</p>
+                    </div>
+                    <div class="promotion-actions">
+                        <button class="action-button list-button">Danh sách</button>
+                        <button class="action-button create-button">Tạo mới</button>
+                    </div>
                 </div>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullname">Họ và tên *</label>
-                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại *</label>
-                            <div class="phone-input">
-                                <select id="country-code">
-                                    <option value="VN">Vietnam</option>
-                                    <!-- More country options can be added here -->
-                                </select>
-                                <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" placeholder="Nhập email" required>
-                        </div>
+
+                <!-- Gift with Purchase Feature -->
+                <div class="promotion-card gift-with-purchase">
+                    <div class="promotion-icon-container">
+                        <img src="gift-icon.png" alt="Gift Icon" class="promotion-icon">
                     </div>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-secondary"><a href="/transaction">Quay lại</a></button>
-                        <button type="submit" class="btn btn-primary"><a href="/transaction/view_CreateInformation2">Tiếp theo</a></button>
+                    <div class="promotion-content">
+                        <h3 class="promotion-title">Quà tặng khi mua hàng</h3>
+                        <p class="promotion-description">Cung cấp quà tặng khi người mua thanh toán 1 sản phẩm chính. Kích thích người dùng mua hàng.</p>
                     </div>
-                </form>
+                    <div class="promotion-actions">
+                        <button class="action-button list-button">Danh sách</button>
+                        <button class="action-button create-button">Tạo mới</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="campaign-list-container">
+                <div class="header">
+                    <h1>Danh sách chiến dịch</h1>
+                    <div class="tabs">
+                        <button class="tab active">Tất cả</button>
+                        <button class="tab">Sắp tới</button>
+                        <button class="tab">Đang diễn ra</button>
+                        <button class="tab">Đã kết thúc</button>
+                        <button class="tab">Hủy kích hoạt</button>
+                    </div>
+                    <div class="filters">
+                        <input type="text" placeholder="Nhập tên chiến dịch" class="filter-input">
+                        <select class="filter-select">
+                            <option>Loại chiến dịch</option>
+                            <option>Giảm giá</option>
+                            <option>Quà tặng</option>
+                        </select>
+                        <input type="date" class="filter-date">
+                        <span> - </span>
+                        <input type="date" class="filter-date">
+                    </div>
+                </div>
+
+                <table class="campaign-table">
+                    <thead>
+                    <tr>
+                        <th>Tên chiến dịch</th>
+                        <th>Trạng thái</th>
+                        <th>Loại chiến dịch</th>
+                        <th>Người dùng áp dụng</th>
+                        <th>Chương trình áp dụng</th>
+                        <th>Người dùng đã mua</th>
+                        <th>Chương trình đã bán</th>
+                        <th>Thời gian ưu đãi</th>
+                        <th>Hành động</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${listCampaign}" var="campaign">
+                            <tr>
+                                <td>${campaign.campaignName}</td>
+                                <td><span class="status-label ended">${campaign.voucherStatus}</span></td>
+                                <td>${campaign.campaignType}</td>
+                                <td>Toàn bộ</td>
+                                <td>1</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>25/07/2024 10:33 - 25/07/2024 10:34</td>
+                                <td><a href="#" class="action-link">Sao chép</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="main-three-top">
+            <div class="total">
+                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
+            </div>
+            <div class="page">
+                <c:if test="${totalPage >0}">
+                    <c:if test="${number <= 0}">
+                        <li aria-disabled="true"><a href="#">Previous</a></li>
+                    </c:if>
+                    <c:if test="${number > 0}">
+                        <li><a href="?page=${number-1}">Previous</a></li>
+                    </c:if>
+                    <c:forEach begin="0" end="${totalPage-1}" var="i">
+                        <c:choose>
+                            <c:when test="${number == i}">
+                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="?page=${i}">${i+1}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${number < totalPage -1}">
+                        <li><a href="?page=${number+1}">Next</a></li>
+                    </c:if>
+                    <c:if test="${number >= totalPage-1}">
+                        <li aria-disabled="true"><a href="#">Next</a></li>
+                    </c:if>
+                </c:if>
             </div>
         </div>
     </main>
 </div>
 <script>
+    document.querySelectorAll('.action-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.classList.contains('list-button') ? 'List' : 'Create';
+            const feature = this.closest('.promotion-card').classList.contains('product-discount') ? 'Giảm giá sản phẩm' : 'Quà tặng khi mua hàng';
+            alert(`${action} action for ${feature}`);
+        });
+    });
 
     // JavaScript to handle modal visibility
     const openModalButton = document.getElementById('openModal');

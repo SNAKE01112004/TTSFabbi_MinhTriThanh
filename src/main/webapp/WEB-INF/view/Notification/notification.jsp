@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/informationTransaction.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Notification/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,20 +37,20 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
+                            <li><a href="/categori"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Quản lý giao dịch</span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,15 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Tạo giao dịch mới</span>
+                    <span>hỏi chấm</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>chấm hỏi</span>
                 </div>
             </div>
 
@@ -139,44 +147,162 @@
         </div>
 
         <div class="main-second-top">
-            <div class="form-container">
-                <div class="progress-bar">
-                    <div class="step active">Nhập thông tin khách hàng</div>
-                    <div class="step">Chọn chương trình cần thanh toán</div>
-                    <div class="step">Xác nhận hành động</div>
-                    <div class="step">Hoàn thành</div>
+            <div class="notification-container">
+                <div class="notification-tabs">
+                    <div class="notification-tab active" onclick="showTab('general')">Thông báo chung</div>
+                    <div class="notification-tab" onclick="showTab('personal')">Thông báo cá nhân</div>
                 </div>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullname">Họ và tên *</label>
-                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+                <ul class="notification-list">
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Đánh giá bài tập đã quá hạn</p>
+                            <p class="notification-description">Ngày đánh giá bài tập cho học viên Duy đã qua, hãy hoàn thành đánh giá bài tập!</p>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại *</label>
-                            <div class="phone-input">
-                                <select id="country-code">
-                                    <option value="VN">Vietnam</option>
-                                    <!-- More country options can be added here -->
-                                </select>
-                                <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
-                            </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            03/08/2024 09:58
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" placeholder="Nhập email" required>
+                    </li>
+                    <!-- Repeat for other notifications -->
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Đánh giá bài tập đã quá hạn</p>
+                            <p class="notification-description">Ngày đánh giá bài tập cho học viên Duy đã qua, hãy hoàn thành đánh giá bài tập!</p>
                         </div>
-                    </div>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-secondary"><a href="/transaction">Quay lại</a></button>
-                        <button type="submit" class="btn btn-primary"><a href="/transaction/view_CreateInformation2">Tiếp theo</a></button>
-                    </div>
-                </form>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            03/08/2024 09:57
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Đánh giá bài tập đã quá hạn</p>
+                            <p class="notification-description">Ngày đánh giá bài tập cho học viên Truongnd2 + 2 đã qua, hãy hoàn thành đánh giá bài tập!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            02/08/2024 09:23
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Đánh giá bài tập đã quá hạn</p>
+                            <p class="notification-description">Ngày đánh giá bài tập cho học viên Truongnd2 + 2 đã qua, hãy hoàn thành đánh giá bài tập!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            31/07/2024 15:14
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Đánh giá bài tập đã quá hạn</p>
+                            <p class="notification-description">Ngày đánh giá bài tập cho học viên Truongnd2 + 2 đã qua, hãy hoàn thành đánh giá bài tập!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            31/07/2024 15:14
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Sắp đến hạn đánh giá bài tập</p>
+                            <p class="notification-description">Chỉ còn 1 ngày nữa là hết hạn đánh giá bài tập của học viên Duy, vui lòng đánh giá bài tập đúng hạn!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            30/07/2024 09:58
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Sắp đến hạn đánh giá bài tập</p>
+                            <p class="notification-description">Chỉ còn 1 ngày nữa là hết hạn đánh giá bài tập của học viên Duy, vui lòng đánh giá bài tập đúng hạn!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            30/07/2024 09:57
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Sắp đến hạn đánh giá bài tập</p>
+                            <p class="notification-description">Chỉ còn 1 ngày nữa là hết hạn đánh giá bài tập của học viên Truongnd2 + 2, vui lòng đánh giá bài tập đúng hạn!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            29/07/2024 09:22
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-icon-wrapper">📝</div>
+                        <div class="notification-details">
+                            <p class="notification-title">Sắp đến hạn đánh giá bài tập</p>
+                            <p class="notification-description">Chỉ còn 3 ngày nữa là hết hạn đánh giá bài tập, vui lòng đánh giá bài tập đúng hạn!</p>
+                        </div>
+                        <div class="notification-timestamp-wrapper">
+                            <span class="notification-timestamp-dot"></span>
+                            28/07/2024 09:58
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-three-top">
+            <div class="total">
+                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
+            </div>
+            <div class="page">
+                <c:if test="${totalPage >0}">
+                    <c:if test="${number <= 0}">
+                        <li aria-disabled="true"><a href="#">Previous</a></li>
+                    </c:if>
+                    <c:if test="${number > 0}">
+                        <li><a href="?page=${number-1}">Previous</a></li>
+                    </c:if>
+                    <c:forEach begin="0" end="${totalPage-1}" var="i">
+                        <c:choose>
+                            <c:when test="${number == i}">
+                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="?page=${i}">${i+1}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${number < totalPage -1}">
+                        <li><a href="?page=${number+1}">Next</a></li>
+                    </c:if>
+                    <c:if test="${number >= totalPage-1}">
+                        <li aria-disabled="true"><a href="#">Next</a></li>
+                    </c:if>
+                </c:if>
             </div>
         </div>
     </main>
 </div>
 <script>
+    function showTab(tabName) {
+        const tabs = document.querySelectorAll('.notification-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const activeTab = Array.from(tabs).find(tab => tab.innerText === tabName);
+        activeTab.classList.add('active');
+
+        // Filter or display notifications based on tabName (e.g., general, personal).
+        // You might need to update this logic to suit your data handling needs.
+    }
 
     // JavaScript to handle modal visibility
     const openModalButton = document.getElementById('openModal');

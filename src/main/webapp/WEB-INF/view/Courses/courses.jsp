@@ -60,7 +60,7 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="">
+                        <a href="/campaign">
                             <span class="icon"><i class="fa-solid fa-ticket"></i></span>
                             <span class="title">Quản lý ưu đãi</span>
                         </a>
@@ -79,14 +79,14 @@
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/message">
                             <span class="icon"><i class="fa-regular fa-comments"></i></span>
                             <span class="title">Quản lý tin nhắn</span>
                         </a>
                     </li>
 
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/notification">
                             <span class="icon"><i class="fa-regular fa-bell"></i></span>
                             <span class="title">Quản lý thông báo</span>
                         </a>

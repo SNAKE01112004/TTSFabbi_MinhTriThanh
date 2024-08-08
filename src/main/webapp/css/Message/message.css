@@ -176,94 +176,141 @@ aside {
     margin-top: 20px;
 }
 
-.checkin-container {
-    width: 100%;
-    margin: 20px auto;
-    background: #ffffff;
-    padding: 20px;
+.keyword-manager-container {
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-.checkin-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.checkin-header-title {
-    margin: 0;
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
-}
-.checkin-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.checkin-search-bar {
-    display: flex;
-    align-items: center;
-}
-.checkin-search-input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 300px;
-    margin-right: 10px;
-}
-.checkin-search-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.checkin-export-button {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #28a745;
-    font-weight: bold;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.checkin-export-button i {
-    margin-right: 5px;
-}
-.checkin-table-container {
-    overflow-x: auto;
-}
-.checkin-table {
+    gap: 20px;
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-.checkin-table th, .checkin-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-.checkin-table th {
-    background-color: #f1f1f1;
-}
-.checkin-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-.checkin-status {
-    padding: 5px 10px;
-    border-radius: 15px;
-    background-color: #ffcccc;
-    color: #cc0000;
-    font-weight: bold;
+    max-width: 100%;
+    position: relative;
 }
 
+/* Panel Styles */
+.keyword-panel {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.keyword-panel h2 {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+/* Keyword Input Styles */
+.keyword-input-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    background-color: #fff;
+    min-height: 40px;
+}
+
+.keyword-input-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 4px;
+    min-width: 100px;
+}
+
+/* Keyword Tag Styles */
+.keyword-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e6f7ff;
+    color: #007bff;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: default;
+}
+
+.keyword-tag span {
+    margin-right: 5px;
+}
+
+.remove-tag-button {
+    background: none;
+    border: none;
+    color: #ff4d4f;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* CSV Upload Button Styles */
+.csv-upload-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #007bff;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.csv-upload-button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Action Buttons */
+.keyword-action-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reset-button {
+    background-color: #007bff;
+}
+
+.apply-button {
+    background-color: #28a745;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}
+
+/* Textarea Styles */
+.replacement-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* main-three-top */
 .main-three-top {
     width: 100%;
     margin-top: 2rem;

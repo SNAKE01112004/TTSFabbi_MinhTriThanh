@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/campaign">
                             <span class="icon"><i class="fa-solid fa-ticket"></i></span>
                             <span class="title">Quản lý ưu đãi</span>
                         </a>
@@ -73,13 +73,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/message">
                             <span class="icon"><i class="fa-regular fa-comments"></i></span>
                             <span class="title">Quản lý tin nhắn</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/notification">
                             <span class="icon"><i class="fa-regular fa-bell"></i></span>
                             <span class="title">Quản lý thông báo</span>
                         </a>
@@ -98,7 +98,7 @@
     <main class="main-content">
         <div class="main-top">
             <div class="main-title">
-                <h1>Chi tiết chương trình</h1>
+                <h1>Chi tiết Event</h1>
                 <div class="main-navigation">
                     <span>Trang chủ</span>
                     <span>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Quản lý giao dịch</span>
+                    <span>Sự kiện</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,14 +116,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Tạo giao dịch mới</span>
-                    <span>
-                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                                      fill="#000000" />
-                            </svg>
-                        </span>
+                    <span>Chi tiết event</span>
                 </div>
             </div>
 
@@ -171,7 +164,7 @@
                 <div class="check-in-section">
                     <h3>Check in</h3>
                     <div class="check-in-buttons">
-                        <button>Ngày 1 13/06/2024</button>
+                        <button><a href="/event/view_detail">Ngày 1 13/06/2024</a></button>
                         <button>Ngày 2 07/07/2024</button>
                         <button>Ngày 3 24/06/2024</button>
                         <button>Ngày 4 27/06/2024</button>
@@ -190,7 +183,7 @@
     const openModalButton = document.getElementById('openModal');
     const closeModalButton = document.getElementById('closeModal');
     const closeModalBottomButton = document.getElementById('closeModalBottom');
-    const modalOverlay = document.getElementById('modalOverlay');
+    const modalOverlay = document.getElementById('modalOverlay');v
     const modal = document.getElementById('modal');
 
     // Function to open the modal

@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minh Trí Thành</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Transaction/informationTransaction.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Message/message.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
             <div class="sidebar">
                 <ul>
                     <li class="sidebar-content">
-                        <a href="/view-user">
+                        <a href="/user">
                             <span class="icon"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="title">Học viên</span>
                         </a>
@@ -37,20 +37,20 @@
                             <sqan class="icon"><i class="fa-solid fa-angle-down"></i></sqan>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="/layout/viewGroupsCategories.html"><span>Danh sách nhóm chương
+                            <li><a href="categori"><span>Danh sách nhóm chương
                                             trình</span></a></li>
-                            <li><a href="#"><span>Danh sách chương trình</span></a></li>
+                            <li><a href="/courses"><span>Danh sách chương trình</span></a></li>
                             <li><a href="#"><span>Danh sách buổi phát trực tuyến</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/rate">
                             <span class="icon"><i class="fa-solid fa-certificate"></i></span>
                             <span class="title">Đánh giá bài tập</span>
                         </a>
                     </li>
                     <li class="sidebar-content">
-                        <a href="#">
+                        <a href="/transaction">
                             <span class="icon"><i class="fa-solid fa-dollar-sign"></i></span>
                             <span class="title">Quản lý giao dịch</span>
                         </a>
@@ -108,7 +108,7 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Quản lý giao dịch</span>
+                    <span>Danh sách chương trình</span>
                     <span>
                             <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,15 @@
                                       fill="#000000" />
                             </svg>
                         </span>
-                    <span>Tạo giao dịch mới</span>
+                    <span>hỏi chấm</span>
+                    <span>
+                            <svg width="12px" height="12px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                                      fill="#000000" />
+                            </svg>
+                        </span>
+                    <span>chấm hỏi</span>
                 </div>
             </div>
 
@@ -139,44 +147,127 @@
         </div>
 
         <div class="main-second-top">
-            <div class="form-container">
-                <div class="progress-bar">
-                    <div class="step active">Nhập thông tin khách hàng</div>
-                    <div class="step">Chọn chương trình cần thanh toán</div>
-                    <div class="step">Xác nhận hành động</div>
-                    <div class="step">Hoàn thành</div>
+            <div class="keyword-manager-container">
+                <!-- Block Harmful Messages Panel -->
+                <div class="keyword-panel" id="block-messages-panel">
+                    <h2>Chặn tin nhắn độc hại</h2>
+                    <div class="keyword-input-container" id="harmful-keywords">
+                        <div class="keyword-tag">
+                            <span>asdfasdf</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
+                        </div>
+                        <div class="keyword-tag">
+                            <span>duma</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
+                        </div>
+                        <div class="keyword-tag">
+                            <span>con cak</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
+                        </div>
+                        <div class="keyword-tag">
+                            <span>ngu</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
+                        </div>
+                        <input type="text" class="keyword-input-field" placeholder="Thêm thẻ..." onkeyup="addKeyword(event, this)">
+                    </div>
+                    <input type="text" class="csv-input-field" placeholder="Nhập dấu phẩy sau mỗi thẻ.">
+                    <a href="#" class="csv-upload-button">Tải lên CSV</a>
                 </div>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullname">Họ và tên *</label>
-                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+
+                <!-- Replace Blocked Keywords Panel -->
+                <div class="keyword-panel" id="replace-keywords-panel">
+                    <h2>Thay thế các từ khóa đã chặn</h2>
+                    <div class="keyword-input-container" id="replace-keywords">
+                        <div class="keyword-tag">
+                            <span>tuyet voi</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại *</label>
-                            <div class="phone-input">
-                                <select id="country-code">
-                                    <option value="VN">Vietnam</option>
-                                    <!-- More country options can be added here -->
-                                </select>
-                                <input type="text" id="phone" placeholder="Nhập số điện thoại" required>
-                            </div>
+                        <div class="keyword-tag">
+                            <span>hay</span>
+                            <button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" placeholder="Nhập email" required>
-                        </div>
+                        <input type="text" class="keyword-input-field" placeholder="Thêm thẻ..." onkeyup="addReplacement(event, this)">
                     </div>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-secondary"><a href="/transaction">Quay lại</a></button>
-                        <button type="submit" class="btn btn-primary"><a href="/transaction/view_CreateInformation2">Tiếp theo</a></button>
-                    </div>
-                </form>
+                    <textarea class="replacement-textarea" placeholder="Nhập dấu phẩy sau mỗi thẻ."></textarea>
+                    <a href="#" class="csv-upload-button">Tải lên CSV</a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="keyword-action-buttons">
+                    <button class="action-button reset-button">Đặt lại cài đặt mặc định</button>
+                    <button class="action-button apply-button">Áp dụng</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-three-top">
+            <div class="total">
+                <span>Hiển thị ${begin} đến ${end} trong ${totalElement} bản ghi</span>
+            </div>
+            <div class="page">
+                <c:if test="${totalPage >0}">
+                    <c:if test="${number <= 0}">
+                        <li aria-disabled="true"><a href="#">Previous</a></li>
+                    </c:if>
+                    <c:if test="${number > 0}">
+                        <li><a href="?page=${number-1}">Previous</a></li>
+                    </c:if>
+                    <c:forEach begin="0" end="${totalPage-1}" var="i">
+                        <c:choose>
+                            <c:when test="${number == i}">
+                                <li class="active"><a href="?page=${i}">${i+1}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="?page=${i}">${i+1}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${number < totalPage -1}">
+                        <li><a href="?page=${number+1}">Next</a></li>
+                    </c:if>
+                    <c:if test="${number >= totalPage-1}">
+                        <li aria-disabled="true"><a href="#">Next</a></li>
+                    </c:if>
+                </c:if>
             </div>
         </div>
     </main>
 </div>
 <script>
+    function addKeyword(event, input) {
+        if (event.key === 'Enter' && input.value.trim() !== '') {
+            const value = input.value.trim();
+            const keywordContainer = document.getElementById('harmful-keywords');
+
+            const newTag = document.createElement('div');
+            newTag.classList.add('keyword-tag');
+            newTag.innerHTML = `<span>${value}</span><button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>`;
+
+            keywordContainer.insertBefore(newTag, input);
+            input.value = '';
+        }
+    }
+
+    // Function to add a replacement keyword tag
+    function addReplacement(event, input) {
+        if (event.key === 'Enter' && input.value.trim() !== '') {
+            const value = input.value.trim();
+            const replacementContainer = document.getElementById('replace-keywords');
+
+            const newTag = document.createElement('div');
+            newTag.classList.add('keyword-tag');
+            newTag.innerHTML = `<span>${value}</span><button type="button" class="remove-tag-button" onclick="removeTag(this)">x</button>`;
+
+            replacementContainer.insertBefore(newTag, input);
+            input.value = '';
+        }
+    }
+
+    // Function to remove a tag
+    function removeTag(button) {
+        const tag = button.parentElement;
+        tag.remove();
+    }
 
     // JavaScript to handle modal visibility
     const openModalButton = document.getElementById('openModal');
